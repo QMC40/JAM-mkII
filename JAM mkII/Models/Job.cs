@@ -5,9 +5,10 @@ namespace JAM_mkII.Models
 {
     public class Job
     {
-        private int JobId { get; set; }
-        private string Position { get; set; }
-        private DateTime OpenDate { get; set; }
-        private DateTime CloseDate { get; set; }
+        [Key]
+        public int JobId { get; set; }
+        public string Position { get; set; }
+        public DateTime OpenDate { get; set; }
+        public DateTime CloseDate { get; set; }
     }
 }

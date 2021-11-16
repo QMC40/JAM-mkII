@@ -1,12 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace JAM_mkII.Models
 {
     public class Employment
     {
-        private int JobId { get; set; }
-        private DateTime StartDate { get; set; }
-        private DateTime StopDate { get; set; }
-        private string Comment { get; set; }
+        [Key]
+        public int EmploymentId { get; set; }
+        public int JobId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime StopDate { get; set; }
+        public string Comment { get; set; }
     }
 }

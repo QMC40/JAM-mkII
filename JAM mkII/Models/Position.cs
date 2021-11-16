@@ -1,8 +1,11 @@
-﻿namespace JAM_mkII.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JAM_mkII.Models
 {
     public class Position
     {
-        private int PositionId { get; set; }
-        private string PositionName { get; set; }
+        [Key]
+        public int PositionId { get; set; }
+        public string PositionName { get; set; }
     }
 }
