@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+<header>
+    <h1 class="site-heading text-center text-faded d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">Making hiring easier everyday!</span>
+        <span class="site-heading-lower">Job Application Manager</span>
+    </h1>
+</header>
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/img/staff1.webp" alt="..."/>
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Looking for a place to grow?</span>
+                    <span class="section-heading-lower">Join our team!</span>
+                </h2>
+                <p class="mb-3">
+                    We’re looking for people that are looking for careers, not just jobs. Even those that
+                    join us in part-time roles learn valuable career developing skills. We want our team members to
+                    enjoy the company they join, and we’ve put a benefits package together that proves it.
+                </p>
+                <p>
+                    Whether you’re entry level or a candidate with 20 years of experience, we’re confident
+                    you’ll find a job that fits you perfectly. Sound good to you? Sounds good to us.
+                </p>
+                <div class="intro-button mx-auto">
+                    <a class="btn btn-primary btn-xl" asp-controller="JobList" asp-action="Index">Check out current job listings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Our Promise</span>
+                        <span class="section-heading-lower">To You</span>
+                    </h2>
+                    <p class="mb-0">At Quick Stop, we aim to use our strengths and collaborate with others to transform 
+                        the systems on which we all rely, including advancing our ambitious commitments and goals 
+                        within the areas of opportunity, sustainability, community and diversity, equity and inclusion. 
+                        We believe that our work in these areas is not only beneficial for our business bottom line, 
+                        but also creates shared value for customers and society.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
