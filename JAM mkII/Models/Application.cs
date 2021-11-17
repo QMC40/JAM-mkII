@@ -10,5 +10,6 @@ namespace JAM_mkII.Models
         public int UserId { get; set; }
         public int JobId { get; set; }
         public DateTime ApplyDate { get; set; }
+        public int ResultId { get; set; }
     }
 }

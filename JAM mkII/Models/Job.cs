@@ -7,7 +7,8 @@ namespace JAM_mkII.Models
     {
         [Key]
         public int JobId { get; set; }
-        public string Position { get; set; }
+        public int PositionId { get; set; }
+        public int StoreId { get; set; }
         public DateTime OpenDate { get; set; }
         public DateTime CloseDate { get; set; }
     }

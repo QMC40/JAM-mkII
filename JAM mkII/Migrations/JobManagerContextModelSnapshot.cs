@@ -32,6 +32,9 @@ namespace JAM_mkII.Migrations
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ResultId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -77,8 +80,11 @@ namespace JAM_mkII.Migrations
                     b.Property<DateTime>("OpenDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("int");
 
                     b.HasKey("JobId");
 
@@ -90,7 +96,32 @@ namespace JAM_mkII.Migrations
                             JobId = 1,
                             CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Position = "manager"
+                            PositionId = 2,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            JobId = 2,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 3,
+                            StoreId = 4
+                        },
+                        new
+                        {
+                            JobId = 3,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 2,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            JobId = 4,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 2,
+                            StoreId = 2
                         });
                 });
 
@@ -107,6 +138,71 @@ namespace JAM_mkII.Migrations
                     b.HasKey("PositionId");
 
                     b.ToTable("Positions");
+
+                    b.HasData(
+                        new
+                        {
+                            PositionId = 1,
+                            PositionName = "Applicant"
+                        },
+                        new
+                        {
+                            PositionId = 2,
+                            PositionName = "Counter Staff"
+                        },
+                        new
+                        {
+                            PositionId = 3,
+                            PositionName = "Shift Manager"
+                        },
+                        new
+                        {
+                            PositionId = 4,
+                            PositionName = "Manager"
+                        },
+                        new
+                        {
+                            PositionId = 5,
+                            PositionName = "Owner"
+                        });
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.Result", b =>
+                {
+                    b.Property<int>("ResultId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Hired")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ResultId");
+
+                    b.ToTable("Results");
+
+                    b.HasData(
+                        new
+                        {
+                            ResultId = 1,
+                            Comments = "couldn't pass test",
+                            Hired = false
+                        },
+                        new
+                        {
+                            ResultId = 2,
+                            Comments = "failed to show for interview",
+                            Hired = false
+                        },
+                        new
+                        {
+                            ResultId = 3,
+                            Comments = "excellent candidate",
+                            Hired = true
+                        });
                 });
 
             modelBuilder.Entity("JAM_mkII.Models.Store", b =>
@@ -136,6 +232,27 @@ namespace JAM_mkII.Migrations
                             Location = "Airline",
                             ManagerId = 1,
                             StaffReq = 2
+                        },
+                        new
+                        {
+                            StoreId = 2,
+                            Location = "Airline",
+                            ManagerId = 1,
+                            StaffReq = 4
+                        },
+                        new
+                        {
+                            StoreId = 3,
+                            Location = "Staples",
+                            ManagerId = 4,
+                            StaffReq = 4
+                        },
+                        new
+                        {
+                            StoreId = 4,
+                            Location = "SPID",
+                            ManagerId = 2,
+                            StaffReq = 6
                         });
                 });
 
@@ -182,6 +299,39 @@ namespace JAM_mkII.Migrations
                             Phone = "555-1212",
                             Position = 1,
                             Ssn = "000-00-0001"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Address = "southside",
+                            DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FName = "John",
+                            LName = "Wayne",
+                            Phone = "555-4242",
+                            Position = 3,
+                            Ssn = "123-45-6789"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Address = "Portland",
+                            DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FName = "Tammy",
+                            LName = "Baker",
+                            Phone = "555-3578",
+                            Position = 2,
+                            Ssn = "987-65-4321"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            Address = "Annaville",
+                            DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FName = "Larry",
+                            LName = "Linville",
+                            Phone = "555-8946",
+                            Position = 2,
+                            Ssn = "556-28-1867"
                         });
                 });
 #pragma warning restore 612, 618

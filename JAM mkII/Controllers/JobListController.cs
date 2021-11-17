@@ -1,13 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using JAM_mkII.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JAM_mkII.Controllers
 {
     public class JobListController : Controller
     {
+        private JobManagerContext Context { get; set; }
+
+        public JobListController(JobManagerContext ctx) => Context = ctx;
+
+
         // GET
         public IActionResult Index()
         {
-            return View();
+            var jobs = Context.Jobs.OrderBy(j => j.StoreId).ToList();
+            return View(jobs);
         }
     }
 }

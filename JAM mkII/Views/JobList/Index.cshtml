@@ -1,4 +1,4 @@
-﻿@model Job
+﻿@model List<Job>
 <body>
 <header>
     <h1 class="site-heading text-center text-faded d-none d-lg-block">
@@ -12,38 +12,33 @@
             <div class="col-xl-9 mx-auto">
                 <div class="cta-inner bg-faded text-center rounded">
                     <h2 class="section-heading mb-5">
-                        <span class="section-heading-upper">Come On In</span>
-                        <span class="section-heading-lower">We're Open</span>
+                        <span class="section-heading-upper">Looking for Opportunity?</span>
+                        <span class="section-heading-lower">Join our team!</span>
                     </h2>
-                   @* <h1>List of current members</h1> *@
-                   @* <table class="table table-bordered table-striped"> *@
-                   @*     <thead> *@
-                   @*     <tr> *@
-                   @*          *@
-                   @*                private int JobId { get; set; } *@
-                   @*                 private string Position { get; set; } *@
-                   @*                 private DateTime OpenDate { get; set; } *@
-                   @*                private DateTime CloseDate { get; set; } *@
-                   @*                 *@
-                   @*                 *@
-                   @*         <th>Job Id Number</th> *@
-                   @*         <th>Position</th> *@
-                   @*         <th>Date Opened</th> *@
-                   @*         <th>Date Closed</th> *@
-                   @*         <th></th> *@
-                   @*     </tr> *@
-                   @*     </thead> *@
-                   @*     <tbody> *@
-                       @* @foreach (var listing in Model) { *@
-                       @*     <tr> *@
-                       @*         <td>@listing.</td> *@
-                       @*         <td>@listing.Firstname</td> *@
-                       @*         <td>@listing.Lastname</td> *@
-                       @*         <td>@listing.Password</td> *@
-                       @*     </tr> *@
-                       @* } *@
-                   @*     </tbody> *@
-                   @* </table> *@
+                   <h1>List of current openings</h1>
+                   <table class="table table-bordered table-striped">
+                       <thead>
+                       <tr>
+                           <th>Job Number</th>
+                           <th>Position</th>
+                           <th>StoreId</th>
+                           <th>Date Opened</th>
+                           <th>Closing Date</th>
+                           <th></th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       @foreach (var listing in Model) {
+                           <tr>
+                               <td>@listing.JobId</td>
+                               <td>@listing.PositionId</td>
+                               <td>@listing.StoreId</td>
+                               <td>@listing.OpenDate</td>
+                               <td>@listing.CloseDate</td>
+                           </tr>
+                       }
+                       </tbody>
+                   </table>
                     <p class="address mb-5">
                         <em>
                             <strong>1116 Orchard Street</strong>
@@ -71,14 +66,16 @@
                 <div class="col-xl-9 col-lg-10 mx-auto">
                     <div class="bg-faded rounded p-5">
                         <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
-                            <span class="section-heading-lower">About Our Cafe</span>
+                            <span class="section-heading-upper"></span>
+                            <span class="section-heading-lower">At Quick Stop customers are #1</span>
                         </h2>
-                        <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.</p>
+                        <p>At Quick Stop, we have talented individuals working hard to 
+                            create a truly enjoyable and convenient shopping experience for our 
+                            customers.</p>
                         <p class="mb-0">
-                            We guarantee that you will fall in
-                            <em>lust</em>
-                            with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.
+                            We strive to make every customer a repeat customer going the extra mile in 
+                            service and courtesy to ensure when they need something quick and convenient,
+                            Quick Stop is their first choice.
                         </p>
                     </div>
                 </div>
