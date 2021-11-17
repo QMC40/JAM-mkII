@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using JAM_mkII.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JAM_mkII.Controllers
@@ -18,6 +19,8 @@ namespace JAM_mkII.Controllers
             return View(jobs);
         }
 
+        //disabled till identity db implemented
+        //[Authorize]
         public IActionResult JobAdmin()
         {
             var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
@@ -29,31 +32,6 @@ namespace JAM_mkII.Controllers
             ViewBag.Action = "Add Job";
             return View("Edit", new Job());
         }
-
-        // [HttpGet]
-        // public IActionResult CreateJob()
-        // {
-        //     ViewBag.Positions = Context.Positions.OrderBy(p => p.PositionId).ToList();
-        //     ViewBag.Stores = Context.Stores.OrderBy(s => s.StoreId).ToList();
-        //     return View(new Job());
-        // }
-        //
-        // [HttpPost]
-        // public IActionResult CreateJob(Job subj)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         Context.Jobs.Add(subj);
-        //         Context.SaveChanges();
-        //         var jobs = Context.Jobs.OrderBy(j => j.StoreId).ToList();
-        //         return View("Index", jobs);
-        //     }
-        //     else
-        //     {
-        //         ViewBag.Action = "There's a problem with your information, please check and resubmit";
-        //         return View("CreateJob", subj);
-        //     }
-        // }
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -87,6 +65,18 @@ namespace JAM_mkII.Controllers
             }
 
         }
+        [HttpGet]
+        public IActionResult Apply(int id)
+        {
+            var job = Context.Jobs.Find(id);
+            return  RedirectToAction("Apply", "Application",id);
+        }
+
+        //[HttpPost]
+        //public IActionResult Apply(Job job)
+        //{
+        //    Context.Applications.Add();
+        //}
 
         [HttpGet]
         public IActionResult Delete(int id)
@@ -102,9 +92,5 @@ namespace JAM_mkII.Controllers
             Context.SaveChanges();
             return RedirectToAction("JobAdmin");
         }
-
-
-
-
     }
 }

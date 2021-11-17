@@ -35,6 +35,7 @@
                                <td>@listing.StoreId</td>
                                <td>@listing.OpenDate.ToShortDateString()</td>
                                <td>@listing.CloseDate.ToShortDateString()</td>
+                               <td><a asp-action="Apply" asp-route-id="@listing.JobId">Apply</a></td>
                            </tr>
                        }
                        </tbody>

@@ -11,5 +11,9 @@ namespace JAM_mkII.Models
         public int JobId { get; set; }
         public DateTime ApplyDate { get; set; }
         public int ResultId { get; set; }
+
+        //pass / fail criteria for hirable
+        public bool Disqualified { get; set; }
+        public bool PassedTest { get; set; }
     }
 }
