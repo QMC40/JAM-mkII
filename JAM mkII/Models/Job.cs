@@ -9,7 +9,9 @@ namespace JAM_mkII.Models
         public int JobId { get; set; }
         public int PositionId { get; set; }
         public int StoreId { get; set; }
+
         public DateTime OpenDate { get; set; }
+
         public DateTime CloseDate { get; set; }
     }
 }

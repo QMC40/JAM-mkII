@@ -1,0 +1,64 @@
+﻿@model Job
+
+<body>
+<header>
+    <h1 class="site-heading text-center text-faded d-none d-lg-block">
+        <span class="site-heading-upper text-primary mb-3">Add a new job listing</span>
+    </h1>
+</header>
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <form asp-action="CreateJob">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="PositionId" class="control-label"></label>
+                            <select asp-for="PositionId" class="form-control">
+                                <option value="">select position</option>
+                                @foreach (Position p in ViewBag.Positions)
+                                {
+                                    <option value=@p.PositionId>@p.PositionName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="StoreId" class="control-label"></label>
+                            <select asp-for="StoreId" class="form-control">
+                                <option value="">select store</option>
+                                @foreach (Store s in ViewBag.Stores)
+                                {
+                                    <option value=@s.StoreId>@s.Location</option>
+                                }
+                            </select>
+
+                            <span asp-validation-for="StoreId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="OpenDate" class="control-label"></label>
+                            <input asp-for="OpenDate" type="date" value="@DateTime.Today"
+                                   min="@DateTime.Today" max="2030-12-31" class="form-control"/>
+                            <span asp-validation-for="OpenDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CloseDate" class="control-label"></label>
+                            <input asp-for="CloseDate" type="date" value="@DateTime.Today" 
+                                   min="@DateTime.Today" max="2030-12-31" class="form-control"/>
+                            <span asp-validation-for="CloseDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary"/>
+                            <input type="submit" value="Job List" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
