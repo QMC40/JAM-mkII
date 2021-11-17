@@ -1,10 +1,13 @@
-﻿namespace JAM_mkII.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JAM_mkII.Models
 {
     public class Store
     {
-        private int StoreId { get; set; }
-        private string Location { get; set; }
-        private int ManagerId { get; set; }
-        private int StaffReq { get; set; }
+        [Key]
+        public int StoreId { get; set; }
+        public string Location { get; set; }
+        public int ManagerId { get; set; }
+        public int StaffReq { get; set; }
     }
 }

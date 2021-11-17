@@ -1,16 +1,18 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace JAM_mkII.Models
 {
     public class User
     {
-        private int UserId { get; set; }
-        private string Ssn { get; set; }
-        private string FName { get; set; }
-        private string LName { get; set; }
-        private DateTime DoB { get; set; }
-        private string Phone { get; set; }
-        private string Address { get; set; }
-        private int Position { get; set; }
+        [Key]
+        public int UserId { get; set; }
+        public string Ssn { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public DateTime DoB { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public int Position { get; set; }
     }
 }
