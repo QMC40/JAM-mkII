@@ -1,18 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace JAM_mkII.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public int UserId { get; set; }
-        public string Ssn { get; set; }
-        public string FName { get; set; }
-        public string LName { get; set; }
-        public DateTime DoB { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public int Position { get; set; }
+        // Inherits all IdentityUser properties
     }
 }

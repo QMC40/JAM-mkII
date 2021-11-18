@@ -1,9 +1,11 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JAM_mkII.Models
 {
-    public class JobManagerContext : DbContext
+    public class JobManagerContext : IdentityDbContext<IdentityUser>
     {
         public JobManagerContext(DbContextOptions<JobManagerContext> options)
             : base(options)
@@ -16,7 +18,7 @@ namespace JAM_mkII.Models
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Store> Stores { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Person> Users { get; set; }
         public DbSet<Result> Results { get; set; }
 
         protected override void OnConfiguring(
@@ -32,8 +34,8 @@ namespace JAM_mkII.Models
             base.OnModelCreating(modelBuilder);
 
             //seed data for testing / demonstration
-            modelBuilder.Entity<User>().HasData(
-                new User
+            modelBuilder.Entity<Person>().HasData(
+                new Person
                 {
                     UserId = 1,
                     Ssn = "000-00-0001",
@@ -44,7 +46,7 @@ namespace JAM_mkII.Models
                     Address = "Countryside",
                     Position = 1
                 },
-                new User
+                new Person
                 {
                     UserId = 2,
                     Ssn = "123-45-6789",
@@ -55,7 +57,7 @@ namespace JAM_mkII.Models
                     Address = "southside",
                     Position = 3
                 },
-                new User
+                new Person
                 {
                     UserId = 3,
                     Ssn = "987-65-4321",
@@ -66,7 +68,7 @@ namespace JAM_mkII.Models
                     Address = "Portland",
                     Position = 2
                 },
-                new User
+                new Person
                 {
                     UserId = 4,
                     Ssn = "556-28-1867",

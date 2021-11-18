@@ -264,7 +264,7 @@ namespace JAM_mkII.Migrations
                         });
                 });
 
-            modelBuilder.Entity("JAM_mkII.Models.User", b =>
+            modelBuilder.Entity("JAM_mkII.Models.Person", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
