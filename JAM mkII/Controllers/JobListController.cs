@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using JAM_mkII.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JAM_mkII.Controllers
@@ -65,18 +64,13 @@ namespace JAM_mkII.Controllers
             }
 
         }
+
         [HttpGet]
         public IActionResult Apply(int id)
         {
             var job = Context.Jobs.Find(id);
-            return  RedirectToAction("Apply", "Application",id);
+            return RedirectToAction("Apply", "Application", job);
         }
-
-        //[HttpPost]
-        //public IActionResult Apply(Job job)
-        //{
-        //    Context.Applications.Add();
-        //}
 
         [HttpGet]
         public IActionResult Delete(int id)

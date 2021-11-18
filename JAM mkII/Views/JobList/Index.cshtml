@@ -15,31 +15,34 @@
                         <span class="section-heading-upper">Looking for Opportunity?</span>
                         <span class="section-heading-lower">Join our team!</span>
                     </h2>
-                   <h1>Current openings</h1>
-                   <table class="table table-bordered table-striped">
-                       <thead>
-                       <tr>
-                           <th>Job Number</th>
-                           <th>Position</th>
-                           <th>StoreId</th>
-                           <th>Date Opened</th>
-                           <th>Closing Date</th>
-                           <th></th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       @foreach (var listing in Model) {
-                           <tr>
-                               <td>@listing.JobId</td>
-                               <td>@listing.PositionId</td>
-                               <td>@listing.StoreId</td>
-                               <td>@listing.OpenDate.ToShortDateString()</td>
-                               <td>@listing.CloseDate.ToShortDateString()</td>
-                               <td><a asp-action="Apply" asp-route-id="@listing.JobId">Apply</a></td>
-                           </tr>
-                       }
-                       </tbody>
-                   </table>
+                    <h1>Current openings</h1>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Job Number</th>
+                            <th>Position</th>
+                            <th>StoreId</th>
+                            <th>Date Opened</th>
+                            <th>Closing Date</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var listing in Model)
+                        {
+                            <tr>
+                                <td>@listing.JobId</td>
+                                <td>@listing.PositionId</td>
+                                <td>@listing.StoreId</td>
+                                <td>@listing.OpenDate.ToShortDateString()</td>
+                                <td>@listing.CloseDate.ToShortDateString()</td>
+                                <td>
+                                    <a asp-action="Apply" asp-route-id="@listing.JobId">Apply</a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -56,11 +59,13 @@
                             <span class="section-heading-upper"></span>
                             <span class="section-heading-lower">At Quick Stop customers are #1</span>
                         </h2>
-                        <p>At Quick Stop, we have talented individuals working hard to 
-                            create a truly enjoyable and convenient shopping experience for our 
-                            customers.</p>
+                        <p>
+                            At Quick Stop, we have talented individuals working hard to
+                            create a truly enjoyable and convenient shopping experience for our
+                            customers.
+                        </p>
                         <p class="mb-0">
-                            We strive to make every customer a repeat customer going the extra mile in 
+                            We strive to make every customer a repeat customer going the extra mile in
                             service and courtesy to ensure when they need something quick and convenient,
                             Quick Stop is their first choice.
                         </p>

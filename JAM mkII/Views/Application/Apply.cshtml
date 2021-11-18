@@ -1,36 +1,41 @@
-﻿@model JAM_mkII.Models.Job
+﻿@model Application
 
-<div>
-    <h4>Job</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PositionId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PositionId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StoreId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StoreId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OpenDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OpenDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CloseDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CloseDate)
-        </dd>
-    </dl>
+@{
+    ViewBag.Title = "Review and submit application";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Apply">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ApplicationId"/>
+                <div class="form-group">
+                    <label asp-for="UserId" class="control-label"></label>
+                    <input asp-for="UserId" type="text" class="form-control" readonly/>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="JobId" class="control-label"></label>
+                    <input asp-for="JobId" type="text" class="form-control" readonly/>
+                    <span asp-validation-for="JobId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApplyDate" class="control-label"></label>
+                    <input asp-for="ApplyDate" type="date"
+                           min="2021-11-18" max="2030-12-31" class="form-control" />
+                    <span asp-validation-for="ApplyDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <br/>
+                    <input type="submit" value="Save Change" class="btn btn-danger"/>
+                    <input type="submit" value="Back to List" class="btn btn-primary" asp-action="Apply"/>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-<div>
-    
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
