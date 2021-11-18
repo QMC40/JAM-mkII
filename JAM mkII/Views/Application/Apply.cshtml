@@ -8,28 +8,25 @@
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Apply">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="ApplicationId"/>
                 <div class="form-group">
                     <label asp-for="UserId" class="control-label"></label>
                     <input asp-for="UserId" type="text" class="form-control" readonly/>
-                    <span asp-validation-for="UserId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="JobId" class="control-label"></label>
                     <input asp-for="JobId" type="text" class="form-control" readonly/>
-                    <span asp-validation-for="JobId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ApplyDate" class="control-label"></label>
                     <input asp-for="ApplyDate" type="date"
-                           min="2021-11-18" max="2030-12-31" class="form-control" />
-                    <span asp-validation-for="ApplyDate" class="text-danger"></span>
+                           min="@DateTime.Today.Date.ToShortDateString()" class="form-control" readonly=""/>
+
                 </div>
                 <div class="form-group">
                     <br/>
-                    <input type="submit" value="Save Change" class="btn btn-danger"/>
-                    <input type="submit" value="Back to List" class="btn btn-primary" asp-action="Apply"/>
+                    <input type="submit" value="Save Change" class="btn btn-danger"asp-action="Apply"/>
+                    <input asp-controller="JobList" asp-action="Index" type="submit" value="Back to List" class="btn btn-primary" />
                 </div>
             </form>
         </div>

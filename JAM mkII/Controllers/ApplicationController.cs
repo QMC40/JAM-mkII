@@ -34,10 +34,8 @@ namespace JAM_mkII.Controllers
             }
             else
             {
-                return Ok("something is fucked");
+                return Ok("something is wrong");
             }
-            // var test = jobApp.JobId;
-            // return Ok($"here we are job {test}");
         }
 
     }
