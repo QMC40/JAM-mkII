@@ -71,6 +71,8 @@ namespace JAM_mkII
             app.UseAuthentication();
             app.UseAuthorization();
 
+            JobManagerContext.CreateAdminUser(app.ApplicationServices).Wait();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -52,6 +52,14 @@
                             </button>
                         </form>
                     </td>
+                    <td>
+                        <form method="get" asp-action="Edit"
+                              asp-route-id="@user.Id">
+                            <button type="submit" class="btn btn-primary">
+                                Edit User
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             }
         }

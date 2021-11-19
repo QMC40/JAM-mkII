@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace JAM_mkII.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Area("Admin")]
     public class UserController : Controller
     {
         private readonly UserManager<User> userManager;
@@ -57,6 +56,59 @@ namespace JAM_mkII.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            User user = await userManager.FindByIdAsync(id);
+            if(user != null)
+            {
+                var subj = new RegisterViewModel
+                {
+                    Email = user.Email,
+                    FName = user.FName,
+                    LName = user.LName,
+                    SSN = user.SSN,
+                    DoB = user.DoB,
+                    PhoneNumber = user.PhoneNumber,
+                    Address = user.Address,
+                };
+                return View(subj);
+            }
+
+            return Ok("fail");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await userManager.FindByIdAsync(model.Email);
+                //Email = model.Email,
+                user.FName = model.FName;
+                user.LName = model.LName;
+                user.SSN = model.SSN;
+                user.DoB = model.DoB;
+                user.PhoneNumber = model.PhoneNumber;
+                user.Address = model.Address;
+                
+                var result = await userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return Ok("yep");
+            //return View(model);
+        }
+
+        [HttpGet]
         public IActionResult Add()
         {
             return View();
@@ -68,7 +120,16 @@ namespace JAM_mkII.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email };
+                var user = new User {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FName = model.FName,
+                    LName = model.LName,
+                    SSN = model.SSN,
+                    DoB = model.DoB,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address,
+                };
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
