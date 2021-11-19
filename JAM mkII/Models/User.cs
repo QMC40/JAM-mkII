@@ -1,18 +1,21 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace JAM_mkII.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public int UserId { get; set; }
-        public string Ssn { get; set; }
+        public string SSN { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public DateTime DoB { get; set; }
-        public string Phone { get; set; }
         public string Address { get; set; }
+        public override string PhoneNumber { get; set; }
         public int Position { get; set; }
+
+        [NotMapped]
+        public IList<string> RoleNames { get; set; }
     }
 }
