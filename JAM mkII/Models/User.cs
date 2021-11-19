@@ -11,8 +11,8 @@ namespace JAM_mkII.Models
         public string FName { get; set; }
         public string LName { get; set; }
         public DateTime DoB { get; set; }
-        public string Address { get; set; }
         public override string PhoneNumber { get; set; }
+        public string Address { get; set; }
         public int Position { get; set; }
 
         [NotMapped]

@@ -11,8 +11,8 @@ namespace JAM_mkII.Controllers
     [Area("Admin")]
     public class UserController : Controller
     {
-        private UserManager<User> userManager;
-        private RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         public UserController(UserManager<User> userMngr,
             RoleManager<IdentityRole> roleMngr)
         {
@@ -22,13 +22,13 @@ namespace JAM_mkII.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<User> users = new List<User>();
+            List<User> users = new();
             foreach (User user in userManager.Users)
             {
                 user.RoleNames = await userManager.GetRolesAsync(user);
                 users.Add(user);
             }
-            UserViewModel model = new UserViewModel
+            UserViewModel model = new()
             {
                 Users = users,
                 Roles = roleManager.Roles

@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    // use current controller or area to determine if tab is active
+    var current = ViewContext.RouteData.Values["area"]?.ToString() ??
+                  ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -66,7 +73,11 @@
                         </a>
                     </li>
                 }
-                <!-- Admin link goes here -->
+                <li class="nav-item @Nav.Active("Admin", current)">
+                    <a class="nav-link" asp-action="Index" asp-controller="User">
+                        <span class="fas fa-cog"></span>&nbsp;Admin
+                    </a>
+                </li>
             </div>
         </div>
     </nav>

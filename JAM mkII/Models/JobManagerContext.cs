@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JAM_mkII.Models
 {
@@ -17,7 +20,7 @@ namespace JAM_mkII.Models
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Store> Stores { get; set; }
-        public DbSet<User> Users { get; set; }
+        // public DbSet<User> Users { get; set; }
         public DbSet<Result> Results { get; set; }
 
         protected override void OnConfiguring(
@@ -191,6 +194,35 @@ namespace JAM_mkII.Models
                     Comments = "excellent candidate"
                 }
             );
+        }
+
+        public static async Task CreateAdminUser(IServiceProvider serviceProvider)
+        {
+            UserManager<User> userManager =
+                serviceProvider.GetRequiredService<UserManager<User>>();
+            RoleManager<IdentityRole> roleManager =
+                serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            string username = "admin";
+            string password = "Sesame";
+            string roleName = "Admin";
+
+            // if role doesn't exist, create it
+            if (await roleManager.FindByNameAsync(roleName) == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+            }
+
+            // if username doesn't exist, create it and add to role
+            if (await userManager.FindByNameAsync(username) == null)
+            {
+                User user = new() { UserName = username };
+                var result = await userManager.CreateAsync(user, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, roleName);
+                }
+            }
         }
     }
 }
