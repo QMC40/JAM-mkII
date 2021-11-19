@@ -1,11 +1,10 @@
 ﻿using System;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JAM_mkII.Models
 {
-    public class JobManagerContext : IdentityDbContext<IdentityUser>
+    public class JobManagerContext : IdentityDbContext<User>
     {
         public JobManagerContext(DbContextOptions<JobManagerContext> options)
             : base(options)
@@ -18,7 +17,7 @@ namespace JAM_mkII.Models
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Store> Stores { get; set; }
-        public DbSet<Person> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Result> Results { get; set; }
 
         protected override void OnConfiguring(
@@ -34,48 +33,44 @@ namespace JAM_mkII.Models
             base.OnModelCreating(modelBuilder);
 
             //seed data for testing / demonstration
-            modelBuilder.Entity<Person>().HasData(
-                new Person
+            modelBuilder.Entity<User>().HasData(
+                new User
                 {
-                    UserId = 1,
-                    Ssn = "000-00-0001",
+                    SSN = "000-00-0001",
                     FName = "Trogdor",
                     LName = "Burninator",
                     DoB = new DateTime(2021, 01, 01),
-                    Phone = "555-1212",
+                    PhoneNumber = "555-1212",
                     Address = "Countryside",
                     Position = 1
                 },
-                new Person
+                new User
                 {
-                    UserId = 2,
-                    Ssn = "123-45-6789",
+                    SSN = "123-45-6789",
                     FName = "John",
                     LName = "Wayne",
                     DoB = new DateTime(1934, 01, 01),
-                    Phone = "555-4242",
+                    PhoneNumber = "555-4242",
                     Address = "southside",
                     Position = 3
                 },
-                new Person
+                new User
                 {
-                    UserId = 3,
-                    Ssn = "987-65-4321",
+                    SSN = "987-65-4321",
                     FName = "Tammy",
                     LName = "Baker",
                     DoB = new DateTime(1995, 01, 01),
-                    Phone = "555-3578",
+                    PhoneNumber = "555-3578",
                     Address = "Portland",
                     Position = 2
                 },
-                new Person
+                new User
                 {
-                    UserId = 4,
-                    Ssn = "556-28-1867",
+                    SSN = "556-28-1867",
                     FName = "Larry",
                     LName = "Linville",
                     DoB = new DateTime(1981, 01, 01),
-                    Phone = "555-8946",
+                    PhoneNumber = "555-8946",
                     Address = "Annaville",
                     Position = 2
                 }

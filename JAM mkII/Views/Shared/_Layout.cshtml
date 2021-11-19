@@ -34,7 +34,39 @@
                         <a class="nav-link text-uppercase" asp-controller="JobList" asp-action="JobAdmin">Admin</a>
                     </li>
                 </ul>
-                <partial name="_LoginPartial" />
+                @using Microsoft.AspNetCore.Identity
+                @inject SignInManager<User> signInManager
+                @if (signInManager.IsSignedIn(User))
+                {
+                    // signed-in user - Log Out button and username
+                    <li class="nav-item">
+                        <form method="post" asp-action="Logout" asp-controller="Account"
+                              asp-area="">
+                            <input type="submit" value="Log Out"
+                                   class="btn btn-outline-light"/>
+                            <span class="text-light">@User.Identity.Name</span>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    // get current action
+                    var action = ViewContext.RouteData.Values["action"]?.ToString();
+                    // anonymous user - Register link and Log In button
+                    <li class="nav-item @Nav.Active("Register", action)">
+                        <a asp-action="Register" asp-controller="Account"
+                           asp-area="" class="nav-link">
+                            Register
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="Login" asp-controller="Account"
+                           asp-area="" class="btn btn-outline-light">
+                            Log In
+                        </a>
+                    </li>
+                }
+                <!-- Admin link goes here -->
             </div>
         </div>
     </nav>
@@ -70,9 +102,9 @@
         <div class="row justify-content-end text-end">
             <div class="col-8 text-right">
                 <address>
-                    Created by <a href="mailto:pcarroll1@islander.tamucc.edu">Patrick Carroll</a><br />
-                    Created by <a href="mailto:afortner@islander.tamucc.edu">Aaron Fortner</a><br />
-                    Created by <a href="mailto:jmontis@islander.tamucc.edu">James Montis</a><br />
+                    Created by <a href="mailto:pcarroll1@islander.tamucc.edu">Patrick Carroll</a><br/>
+                    Created by <a href="mailto:afortner@islander.tamucc.edu">Aaron Fortner</a><br/>
+                    Created by <a href="mailto:jmontis@islander.tamucc.edu">James Montis</a><br/>
                     [FALL-21] COSC-3370-001 - SOFTWARE ENGINEERING
                 </address>
             </div>

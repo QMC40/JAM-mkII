@@ -131,85 +131,6 @@ namespace JAM_mkII.Migrations
                         });
                 });
 
-            modelBuilder.Entity("JAM_mkII.Models.Person", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DoB")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Ssn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Address = "Countryside",
-                            DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FName = "Trogdor",
-                            LName = "Burninator",
-                            Phone = "555-1212",
-                            Position = 1,
-                            Ssn = "000-00-0001"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            Address = "southside",
-                            DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FName = "John",
-                            LName = "Wayne",
-                            Phone = "555-4242",
-                            Position = 3,
-                            Ssn = "123-45-6789"
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            Address = "Portland",
-                            DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FName = "Tammy",
-                            LName = "Baker",
-                            Phone = "555-3578",
-                            Position = 2,
-                            Ssn = "987-65-4321"
-                        },
-                        new
-                        {
-                            UserId = 4,
-                            Address = "Annaville",
-                            DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FName = "Larry",
-                            LName = "Linville",
-                            Phone = "555-8946",
-                            Position = 2,
-                            Ssn = "556-28-1867"
-                        });
-                });
-
             modelBuilder.Entity("JAM_mkII.Models.Position", b =>
                 {
                     b.Property<int>("PositionId")
@@ -349,9 +270,15 @@ namespace JAM_mkII.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DoB")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -359,6 +286,12 @@ namespace JAM_mkII.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -383,6 +316,12 @@ namespace JAM_mkII.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SSN")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -404,6 +343,80 @@ namespace JAM_mkII.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "9389359f-78f8-468d-b0ad-b764a77e7bcf",
+                            AccessFailedCount = 0,
+                            Address = "Countryside",
+                            ConcurrencyStamp = "323b037a-c70e-4232-b183-ff86bd9f3e39",
+                            DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailConfirmed = false,
+                            FName = "Trogdor",
+                            LName = "Burninator",
+                            LockoutEnabled = false,
+                            PhoneNumber = "555-1212",
+                            PhoneNumberConfirmed = false,
+                            Position = 1,
+                            SSN = "000-00-0001",
+                            SecurityStamp = "8773c144-1551-4b10-92d8-ce813f04475b",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "c90a9366-9d32-40d6-8189-88a744073be0",
+                            AccessFailedCount = 0,
+                            Address = "southside",
+                            ConcurrencyStamp = "c91e68b3-ab36-4ba0-a6fc-c0b5f91f33be",
+                            DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailConfirmed = false,
+                            FName = "John",
+                            LName = "Wayne",
+                            LockoutEnabled = false,
+                            PhoneNumber = "555-4242",
+                            PhoneNumberConfirmed = false,
+                            Position = 3,
+                            SSN = "123-45-6789",
+                            SecurityStamp = "aabf7c59-ced3-4854-a7e9-b7462c217244",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "60e3d63f-534f-45a1-a6b1-ab4391ead6d3",
+                            AccessFailedCount = 0,
+                            Address = "Portland",
+                            ConcurrencyStamp = "1ec3b7d4-39d2-4273-9900-c08acc74a624",
+                            DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailConfirmed = false,
+                            FName = "Tammy",
+                            LName = "Baker",
+                            LockoutEnabled = false,
+                            PhoneNumber = "555-3578",
+                            PhoneNumberConfirmed = false,
+                            Position = 2,
+                            SSN = "987-65-4321",
+                            SecurityStamp = "b039b20f-73b9-473d-87af-32fe72628c4d",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "55d2aafa-1bd4-49cd-8ec5-c41ff43dde3a",
+                            AccessFailedCount = 0,
+                            Address = "Annaville",
+                            ConcurrencyStamp = "8947524e-cbb5-424d-b4b8-217422eacac0",
+                            DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmailConfirmed = false,
+                            FName = "Larry",
+                            LName = "Linville",
+                            LockoutEnabled = false,
+                            PhoneNumber = "555-8946",
+                            PhoneNumberConfirmed = false,
+                            Position = 2,
+                            SSN = "556-28-1867",
+                            SecurityStamp = "c7ba06e9-4de6-4b81-89c9-a2766a9bc5a3",
+                            TwoFactorEnabled = false
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
