@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JAM_mkII.Controllers
+namespace JAM_mkII.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class UserController : Controller
@@ -59,17 +59,17 @@ namespace JAM_mkII.Controllers
         public async Task<IActionResult> Edit(string id)
         {
             User user = await userManager.FindByIdAsync(id);
-            if(user != null)
+            if (user != null)
             {
-                var subj = new RegisterViewModel
+                var subj = new UserEditViewModel
                 {
                     Email = user.Email,
                     FName = user.FName,
-                    LName = user.LName,
-                    SSN = user.SSN,
-                    DoB = user.DoB,
-                    PhoneNumber = user.PhoneNumber,
-                    Address = user.Address,
+                    // LName = user.LName,
+                    // SSN = user.SSN,
+                    // DoB = user.DoB,
+                    // PhoneNumber = user.PhoneNumber,
+                    // Address = user.Address,
                 };
                 return View(subj);
             }
@@ -78,19 +78,17 @@ namespace JAM_mkII.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(RegisterViewModel model)
+        public async Task<IActionResult> Edit(UserEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = await userManager.FindByIdAsync(model.Email);
-                //Email = model.Email,
+                User user = await userManager.FindByNameAsync(model.Email);
+                // user.Email = model.Email;
                 user.FName = model.FName;
                 user.LName = model.LName;
                 user.SSN = model.SSN;
                 user.DoB = model.DoB;
-                user.PhoneNumber = model.PhoneNumber;
-                user.Address = model.Address;
-                
+
                 var result = await userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
@@ -120,7 +118,8 @@ namespace JAM_mkII.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new User {
+                var user = new User
+                {
                     UserName = model.Email,
                     Email = model.Email,
                     FName = model.FName,

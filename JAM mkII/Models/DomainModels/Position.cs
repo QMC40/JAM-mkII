@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JAM_mkII.Models
+namespace JAM_mkII.Models.DomainModels
 {
     public class Position
     {

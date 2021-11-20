@@ -1,4 +1,4 @@
-﻿namespace JAM_mkII.Models
+﻿namespace JAM_mkII.Models.ViewModels
 {
     public static class Nav
     {

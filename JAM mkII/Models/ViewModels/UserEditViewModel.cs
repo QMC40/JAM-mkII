@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace JAM_mkII.Models
+namespace JAM_mkII.Models.ViewModels
 {
-    public class RegisterViewModel
+    public class UserEditViewModel
     {
         [Required(ErrorMessage = "Please enter valid email address.")]
         [DataType(DataType.EmailAddress)]
@@ -32,14 +32,5 @@ namespace JAM_mkII.Models
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Please enter a password.")]
-        [DataType(DataType.Password)]
-        [Compare("ConfirmPassword")]
-        public string Password { get; set; }
-
-        [Required(ErrorMessage = "Please confirm your password.")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        public string ConfirmPassword { get; set; }
     }
 }

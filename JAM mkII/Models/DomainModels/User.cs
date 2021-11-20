@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace JAM_mkII.Models
+namespace JAM_mkII.Models.DomainModels
 {
     public class User : IdentityUser
     {

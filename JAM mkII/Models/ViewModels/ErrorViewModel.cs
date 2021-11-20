@@ -1,6 +1,4 @@
-using System;
-
-namespace JAM_mkII.Models
+namespace JAM_mkII.Models.ViewModels
 {
     public class ErrorViewModel
     {
