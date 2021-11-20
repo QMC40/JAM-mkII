@@ -1,5 +1,4 @@
-﻿@model Application
-
+﻿@model JAM_mkII.Models.DomainModels.Application
 @{
     ViewBag.Title = "Review and submit application";
 }
@@ -20,13 +19,12 @@
                 <div class="form-group">
                     <label asp-for="ApplyDate" class="control-label"></label>
                     <input asp-for="ApplyDate" type="date"
-                           min="@DateTime.Today.Date.ToShortDateString()" class="form-control" readonly=""/>
-
+                           min="@DateTime.Today.Date.ToShortDateString()" class="form-control" readonly/>
                 </div>
                 <div class="form-group">
                     <br/>
                     <input type="submit" value="Save Change" class="btn btn-danger"asp-action="Apply"/>
-                    <input asp-controller="JobList" asp-action="Index" type="submit" value="Back to List" class="btn btn-primary" />
+                    <input asp-controller="JobList" asp-action="Index" type="submit" value="Back to List" class="btn btn-primary"/>
                 </div>
             </form>
         </div>

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using JAM_mkII.Models;
+using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace JAM_mkII.Areas.Admin.Models

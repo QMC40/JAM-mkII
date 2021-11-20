@@ -15,7 +15,6 @@ namespace JAM_mkII.Models.DomainModels
         public string Address { get; set; }
         public int Position { get; set; }
 
-        [NotMapped]
-        public IList<string> RoleNames { get; set; }
+        [NotMapped] public IList<string> RoleNames { get; set; }
     }
 }

@@ -5,6 +5,16 @@ namespace JAM_mkII.Models.DomainModels
 {
     public class Application
     {
+        public Application(int jobId)
+        {
+            ApplyDate = DateTime.Now;
+            JobId = jobId;
+        }
+
+        public Application()
+        {
+        }
+
         [Key] public int ApplicationId { get; set; }
         public int UserId { get; set; }
         public int JobId { get; set; }
@@ -14,16 +24,5 @@ namespace JAM_mkII.Models.DomainModels
         //pass / fail criteria for hirable
         public bool Disqualified { get; set; } = false;
         public bool PassedTest { get; set; } = false;
-
-        public Application(int jobId)
-        {
-            ApplyDate = DateTime.Now;
-            JobId = jobId;
-        }
-
-        public Application()
-        {
-
-        }
     }
 }

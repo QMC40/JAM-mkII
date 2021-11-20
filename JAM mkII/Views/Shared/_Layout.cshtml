@@ -1,4 +1,7 @@
-﻿@{
+﻿@using JAM_mkII.Models.DomainModels
+@using JAM_mkII.Models.ViewModels
+@using Microsoft.AspNetCore.Identity
+@{
     // use current controller or area to determine if tab is active
     var current = ViewContext.RouteData.Values["area"]?.ToString() ??
                   ViewContext.RouteData.Values["controller"]?.ToString();
@@ -41,7 +44,6 @@
                         <a class="nav-link text-uppercase" asp-controller="JobList" asp-action="JobAdmin">Admin</a>
                     </li>
                 </ul>
-                @using Microsoft.AspNetCore.Identity
                 @inject SignInManager<User> signInManager
                 @if (signInManager.IsSignedIn(User))
                 {
@@ -74,7 +76,7 @@
                     </li>
                 }
                 <li class="nav-item @Nav.Active("Admin", current)">
-                    <a class="nav-link" asp-action="Index" asp-controller="User">
+                    <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
                         <span class="fas fa-cog"></span>&nbsp;Admin
                     </a>
                 </li>
@@ -141,5 +143,5 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", false)
 </html>

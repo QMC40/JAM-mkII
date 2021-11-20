@@ -31,6 +31,5 @@ namespace JAM_mkII.Models.ViewModels
         [Required(ErrorMessage = "Please enter valid phone number.")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
-
     }
 }

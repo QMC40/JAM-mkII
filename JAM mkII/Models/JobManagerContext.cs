@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,21 +15,23 @@ namespace JAM_mkII.Models
         {
         }
 
-
         public DbSet<Application> Applications { get; set; }
         public DbSet<Employment> Employments { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Position> Positions { get; set; }
+
         public DbSet<Store> Stores { get; set; }
+
         // public DbSet<User> Users { get; set; }
         public DbSet<Result> Results { get; set; }
 
-        protected override void OnConfiguring(
-            DbContextOptionsBuilder optionsBuilder)
-        {
-            // code that configures the DbContext goes here
-            base.OnConfiguring(optionsBuilder);
-        }
+        //delete
+        // protected override void OnConfiguring(
+        //     DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     // code that configures the DbContext goes here
+        //     base.OnConfiguring(optionsBuilder);
+        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +42,8 @@ namespace JAM_mkII.Models
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
+                    UserName = "hotstuff@yahoops.com",
+                    Email = "hotstuff@yahoops.com",
                     SSN = "000-00-0001",
                     FName = "Trogdor",
                     LName = "Burninator",
@@ -49,6 +54,8 @@ namespace JAM_mkII.Models
                 },
                 new User
                 {
+                    UserName = "Duke@yahoops.com",
+                    Email = "Duke@yahoops.com",
                     SSN = "123-45-6789",
                     FName = "John",
                     LName = "Wayne",
@@ -59,6 +66,8 @@ namespace JAM_mkII.Models
                 },
                 new User
                 {
+                    UserName = "OMGawd@yahoops.com",
+                    Email = "OMGawd@yahoops.com",
                     SSN = "987-65-4321",
                     FName = "Tammy",
                     LName = "Baker",
@@ -69,6 +78,8 @@ namespace JAM_mkII.Models
                 },
                 new User
                 {
+                    UserName = "wyrm@yahoops.com",
+                    Email = "wyrm@yahoops.com",
                     SSN = "556-28-1867",
                     FName = "Larry",
                     LName = "Linville",
@@ -126,7 +137,7 @@ namespace JAM_mkII.Models
                 new Store
                 {
                     StoreId = 2,
-                    Location = "Airline",
+                    Location = "Holly",
                     ManagerId = 1,
                     StaffReq = 4
                 },
@@ -172,7 +183,6 @@ namespace JAM_mkII.Models
                     PositionId = 5,
                     PositionName = "Owner"
                 }
-
             );
             modelBuilder.Entity<Result>().HasData(
                 new Result
@@ -198,30 +208,26 @@ namespace JAM_mkII.Models
 
         public static async Task CreateAdminUser(IServiceProvider serviceProvider)
         {
-            UserManager<User> userManager =
+            var userManager =
                 serviceProvider.GetRequiredService<UserManager<User>>();
-            RoleManager<IdentityRole> roleManager =
+            var roleManager =
                 serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            string username = "admin";
-            string password = "Sesame";
-            string roleName = "Admin";
+            var email = "admin@quickstop.com";
+            var username = "admin@quickstop.com";
+            var password = "Sesame";
+            var roleName = "Admin";
 
             // if role doesn't exist, create it
             if (await roleManager.FindByNameAsync(roleName) == null)
-            {
                 await roleManager.CreateAsync(new IdentityRole(roleName));
-            }
 
             // if username doesn't exist, create it and add to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new() { UserName = username };
+                User user = new() {UserName = username};
                 var result = await userManager.CreateAsync(user, password);
-                if (result.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(user, roleName);
-                }
+                if (result.Succeeded) await userManager.AddToRoleAsync(user, roleName);
             }
         }
     }
