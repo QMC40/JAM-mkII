@@ -3,8 +3,7 @@
     ViewBag.Title = "Edit User ";
 }
 
-<h2>Edit User</h2>
-@* <h2>Edit User: <span>@Model.Email</span></h2> *@
+<h2>Edit User: <span>@Model.Email</span></h2>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post" asp-action="Edit">
@@ -63,7 +62,7 @@
             <label>Date of Birth:</label>
         </div>
         <div class="col-sm-4">
-            <input type="date" asp-for="DoB"
+            <input type="date" asp-for="DoB" value="1990-01-01" min="1930-01-01" max="2030-01-01"
                    class="form-control"/>
         </div>
         <div class="col">
@@ -103,7 +102,7 @@
 
     <div class="row">
         <div class="offset-2 col-sm-4">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>
     </div>
 </form>

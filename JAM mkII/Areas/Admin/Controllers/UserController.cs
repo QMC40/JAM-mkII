@@ -67,12 +67,12 @@ namespace JAM_mkII.Areas.Admin.Controllers
                 var subj = new UserEditViewModel
                 {
                     Email = user.Email,
-                    FName = user.FName
-                    // LName = user.LName,
-                    // SSN = user.SSN,
-                    // DoB = user.DoB,
-                    // PhoneNumber = user.PhoneNumber,
-                    // Address = user.Address,
+                    FName = user.FName,
+                    LName = user.LName,
+                    SSN = user.SSN,
+                    DoB = user.DoB,
+                    PhoneNumber = user.PhoneNumber,
+                    Address = user.Address,
                 };
                 return View(subj);
             }
@@ -86,11 +86,13 @@ namespace JAM_mkII.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = await userManager.FindByNameAsync(model.Email);
-                // user.Email = model.Email;
+                user.Email = model.Email;
                 user.FName = model.FName;
                 user.LName = model.LName;
                 user.SSN = model.SSN;
                 user.DoB = model.DoB;
+                user.Address = model.Address;
+                user.PhoneNumber = model.PhoneNumber;
 
                 var result = await userManager.UpdateAsync(user);
                 if (result.Succeeded)

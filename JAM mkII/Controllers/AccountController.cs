@@ -27,7 +27,7 @@ namespace JAM_mkII.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
             {
                 var user = new User
                 {
@@ -63,7 +63,7 @@ namespace JAM_mkII.Controllers
         [HttpGet]
         public IActionResult LogIn(string returnURL = "")
         {
-            var model = new LoginViewModel {ReturnUrl = returnURL};
+            var model = new LoginViewModel { ReturnUrl = returnURL };
             return View(model);
         }
 
