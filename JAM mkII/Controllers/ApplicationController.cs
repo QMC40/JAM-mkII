@@ -1,15 +1,19 @@
 ﻿using JAM_mkII.Models;
+using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JAM_mkII.Controllers
 {
     public class ApplicationController : Controller
     {
-        private JobManagerContext Context { get; set; }
+        public ApplicationController(JobManagerContext ctx)
+        {
+            Context = ctx;
+        }
 
-        public ApplicationController(JobManagerContext ctx) => Context = ctx;
+        private JobManagerContext Context { get; }
 
-        // GET
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -32,11 +36,8 @@ namespace JAM_mkII.Controllers
                 Context.SaveChanges();
                 return RedirectToAction("Index", "JobList");
             }
-            else
-            {
-                return Ok("something is wrong");
-            }
-        }
 
+            return Ok("something is wrong");
+        }
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System.Linq;
 using JAM_mkII.Models;
+using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JAM_mkII.Controllers
 {
     public class JobListController : Controller
     {
-        private JobManagerContext Context { get; set; }
+        public JobListController(JobManagerContext ctx)
+        {
+            Context = ctx;
+        }
 
-        public JobListController(JobManagerContext ctx) => Context = ctx;
+        private JobManagerContext Context { get; }
 
 
         // GET
@@ -46,23 +50,16 @@ namespace JAM_mkII.Controllers
             if (ModelState.IsValid)
             {
                 if (job.JobId == 0)
-                {
                     Context.Jobs.Add(job);
-                }
                 else
-                {
                     Context.Jobs.Update(job);
-                }
 
                 Context.SaveChanges();
                 return RedirectToAction("JobAdmin");
             }
-            else
-            {
-                ViewBag.Action = (job.JobId == 0) ? "Add" : "Edit";
-                return View(job);
-            }
 
+            ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";
+            return View(job);
         }
 
         [HttpGet]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace JAM_mkII.Models
+namespace JAM_mkII.Models.DomainModels
 {
     public class User : IdentityUser
     {
@@ -11,11 +11,10 @@ namespace JAM_mkII.Models
         public string FName { get; set; }
         public string LName { get; set; }
         public DateTime DoB { get; set; }
-        public string Address { get; set; }
         public override string PhoneNumber { get; set; }
+        public string Address { get; set; }
         public int Position { get; set; }
 
-        [NotMapped]
-        public IList<string> RoleNames { get; set; }
+        [NotMapped] public IList<string> RoleNames { get; set; }
     }
 }

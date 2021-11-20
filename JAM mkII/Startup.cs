@@ -1,4 +1,5 @@
 using JAM_mkII.Models;
+using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -24,7 +25,7 @@ namespace JAM_mkII
             //add in Db service for injection - done here because the JSON appsettings was not working for some formatting reason and it
             //was easier to hard code it here...
 
-            string connectionString =
+            var connectionString =
                 "Server=(localdb)\\mssqllocaldb;Database=Jobs;Trusted_Connection=True;MultipleActiveResultSets=true";
             services.AddDbContextPool<JobManagerContext>(options =>
                 options.UseSqlServer(connectionString));
@@ -71,11 +72,20 @@ namespace JAM_mkII
             app.UseAuthentication();
             app.UseAuthorization();
 
+            JobManagerContext.CreateAdminUser(app.ApplicationServices).Wait();
+
             app.UseEndpoints(endpoints =>
             {
+                //routing for Admin area
+                endpoints.MapAreaControllerRoute(
+                    "admin",
+                    "Admin",
+                    "Admin/{controller=Home}/{action=Index}/{id?}");
+
+                //default routing for everywhere else
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

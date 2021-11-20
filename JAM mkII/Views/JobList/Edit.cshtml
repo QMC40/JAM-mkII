@@ -1,4 +1,4 @@
-﻿@model JAM_mkII.Models.Job
+﻿@model JAM_mkII.Models.DomainModels.Job
 
 @{
     string title = ViewBag.Action;
@@ -6,38 +6,38 @@
 }
 
 <h4>@title</h4>
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="JobId" />
+            <input type="hidden" asp-for="JobId"/>
             <div class="form-group">
                 <label asp-for="PositionId" class="control-label"></label>
-                <input asp-for="PositionId" class="form-control" />
+                <input asp-for="PositionId" class="form-control"/>
                 <span asp-validation-for="PositionId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StoreId" class="control-label"></label>
-                <input asp-for="StoreId" class="form-control" />
+                <input asp-for="StoreId" class="form-control"/>
                 <span asp-validation-for="StoreId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OpenDate" class="control-label"></label>
-                <input asp-for="OpenDate" type="date" 
-                       min="@DateTime.Today" max="2030-12-31" class="form-control" />
+                <input asp-for="OpenDate" type="date"
+                       min="@DateTime.Today" max="2030-12-31" class="form-control"/>
                 <span asp-validation-for="OpenDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CloseDate" class="control-label"></label>
-                <input asp-for="CloseDate" type="date" 
-                       min="@DateTime.Today" max="2030-12-31" class="form-control" />
+                <input asp-for="CloseDate" type="date"
+                       min="@DateTime.Today" max="2030-12-31" class="form-control"/>
                 <span asp-validation-for="CloseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <br />
-                <input type="submit" value="Save Change" class="btn btn-danger" />
-                <input type="submit" value="Back to List" class="btn btn-primary" asp-action="JobAdmin" />
+                <br/>
+                <input type="submit" value="Save Change" class="btn btn-danger"/>
+                <input type="submit" value="Back to List" class="btn btn-primary" asp-action="JobAdmin"/>
             </div>
         </form>
     </div>

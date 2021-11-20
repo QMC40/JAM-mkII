@@ -242,7 +242,7 @@ namespace JAM_mkII.Migrations
                         new
                         {
                             StoreId = 2,
-                            Location = "Airline",
+                            Location = "Holly",
                             ManagerId = 1,
                             StaffReq = 4
                         },
@@ -347,11 +347,12 @@ namespace JAM_mkII.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9389359f-78f8-468d-b0ad-b764a77e7bcf",
+                            Id = "c2e53c75-b9c6-4527-9119-75b8eed39a89",
                             AccessFailedCount = 0,
                             Address = "Countryside",
-                            ConcurrencyStamp = "323b037a-c70e-4232-b183-ff86bd9f3e39",
+                            ConcurrencyStamp = "d9ba79cf-d016-4ec2-8cdb-cfb15085948b",
                             DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "hotstuff@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Trogdor",
                             LName = "Burninator",
@@ -360,16 +361,18 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 1,
                             SSN = "000-00-0001",
-                            SecurityStamp = "8773c144-1551-4b10-92d8-ce813f04475b",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "06ac9c81-91a0-4698-8b9a-399bdf1411d8",
+                            TwoFactorEnabled = false,
+                            UserName = "hotstuff@yahoops.com"
                         },
                         new
                         {
-                            Id = "c90a9366-9d32-40d6-8189-88a744073be0",
+                            Id = "20cf3259-fd92-4671-9160-743eaf017141",
                             AccessFailedCount = 0,
                             Address = "southside",
-                            ConcurrencyStamp = "c91e68b3-ab36-4ba0-a6fc-c0b5f91f33be",
+                            ConcurrencyStamp = "d48325e8-65fd-4cc5-8a9b-4b61697b3ed7",
                             DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Duke@yahoops.com",
                             EmailConfirmed = false,
                             FName = "John",
                             LName = "Wayne",
@@ -378,16 +381,18 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 3,
                             SSN = "123-45-6789",
-                            SecurityStamp = "aabf7c59-ced3-4854-a7e9-b7462c217244",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "94ddb38b-12f9-4c56-b938-c034993b80a2",
+                            TwoFactorEnabled = false,
+                            UserName = "Duke@yahoops.com"
                         },
                         new
                         {
-                            Id = "60e3d63f-534f-45a1-a6b1-ab4391ead6d3",
+                            Id = "3957ec9c-c4bc-49b6-8c8e-2105217fead5",
                             AccessFailedCount = 0,
                             Address = "Portland",
-                            ConcurrencyStamp = "1ec3b7d4-39d2-4273-9900-c08acc74a624",
+                            ConcurrencyStamp = "57ca8d01-c7d1-4009-8a48-a670e4138ce5",
                             DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "OMGawd@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Tammy",
                             LName = "Baker",
@@ -396,16 +401,18 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "987-65-4321",
-                            SecurityStamp = "b039b20f-73b9-473d-87af-32fe72628c4d",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "7cb63150-ca0b-46fa-9968-273750af33de",
+                            TwoFactorEnabled = false,
+                            UserName = "OMGawd@yahoops.com"
                         },
                         new
                         {
-                            Id = "55d2aafa-1bd4-49cd-8ec5-c41ff43dde3a",
+                            Id = "701b0641-0b2e-4fb0-90e4-8a0eca959010",
                             AccessFailedCount = 0,
                             Address = "Annaville",
-                            ConcurrencyStamp = "8947524e-cbb5-424d-b4b8-217422eacac0",
+                            ConcurrencyStamp = "c56606a8-2721-4fc3-a82f-3d593d1b7e95",
                             DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "wyrm@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Larry",
                             LName = "Linville",
@@ -414,8 +421,9 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "556-28-1867",
-                            SecurityStamp = "c7ba06e9-4de6-4b81-89c9-a2766a9bc5a3",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "c0bad2bd-9a43-4ee6-a9a7-7bf35b9e54bd",
+                            TwoFactorEnabled = false,
+                            UserName = "wyrm@yahoops.com"
                         });
                 });
 
@@ -497,12 +505,10 @@ namespace JAM_mkII.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -539,12 +545,10 @@ namespace JAM_mkII.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
