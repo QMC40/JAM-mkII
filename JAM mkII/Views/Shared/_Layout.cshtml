@@ -29,19 +29,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" asp-controller="JobList" asp-action="Index">Job Listings</a>
+                        <a class="nav-link text-uppercase" asp-controller="JobList" asp-area="" asp-action="Index">Job Listings</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" asp-controller="Home" asp-action="Benefits">Benefits</a>
+                        <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="Benefits">Benefits</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" asp-controller="Home" asp-action="About">About</a>
+                        <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="About">About</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase" asp-controller="JobList" asp-action="JobAdmin">Admin</a>
+                        <a class="nav-link text-uppercase" asp-controller="JobList" asp-area="" asp-action="JobAdmin">Admin</a>
                     </li>
                 </ul>
                 @inject SignInManager<User> signInManager
