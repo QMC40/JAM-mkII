@@ -26,7 +26,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
 
         //disabled till identity db implemented
         // [Authorize]
-        public IActionResult JobMgmt()
+        public IActionResult JobMgmt1()
         {
             var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
             return View(jobs);

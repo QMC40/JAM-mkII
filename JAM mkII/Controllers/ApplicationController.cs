@@ -29,6 +29,7 @@ namespace JAM_mkII.Controllers
         [HttpGet]
         public IActionResult Apply(Job job)
         {
+            //TRY CATCH FOR TS REMOVE FOR TURN IN XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             try
             {
                 var id = userManager.GetUserId(User);
