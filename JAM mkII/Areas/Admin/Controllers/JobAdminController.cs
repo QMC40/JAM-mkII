@@ -57,7 +57,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                     Context.Jobs.Update(job);
 
                 Context.SaveChanges();
-                return RedirectToAction("JobMgmt");
+                return RedirectToAction("JobMgmt1");
             }
 
             ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";
