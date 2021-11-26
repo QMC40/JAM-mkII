@@ -25,13 +25,13 @@
             <div class="form-group">
                 <label asp-for="OpenDate" class="control-label"></label>
                 <input asp-for="OpenDate" type="date"
-                       min="@DateTime.Today" max="2030-12-31" class="form-control"/>
+                       min="@DateTime.Today" value="1990-01-01" min="1930-01-01" max="2030-01-01"class="form-control"/>
                 <span asp-validation-for="OpenDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CloseDate" class="control-label"></label>
                 <input asp-for="CloseDate" type="date"
-                       min="@DateTime.Today" max="2030-12-31" class="form-control"/>
+                       min="@DateTime.Today" value="1990-01-01" min="1930-01-01" max="2030-01-01" class="form-control"/>
                 <span asp-validation-for="CloseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,4 +44,3 @@
 </div>
 
 @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}

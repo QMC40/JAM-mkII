@@ -9,17 +9,17 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
-
+nav-link active
 <ul class="nav nav-tabs mt-2 mb-3">
     <li class="nav-item">
         <a asp-action="UserMgmt" asp-controller="User"
-           class="nav-link @Nav.Active("User", current)">
+           class="nav-link active @Nav.Active("User", current)">
             Manage Users
         </a>
     </li>
     <li class="nav-item">
         <a asp-action="JobMgmt1" asp-controller="JobAdmin"
-           class="nav-link @Nav.Active("User", current)">
+           class="nav-link active @Nav.Active("User", current)">
             Manage Jobs
         </a>
     </li>

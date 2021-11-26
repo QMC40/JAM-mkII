@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using JAM_mkII.Areas.Admin.Models;
+using JAM_mkII.Areas.Admin.Models.ViewModels;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
@@ -24,12 +25,17 @@ namespace JAM_mkII.Areas.Admin.Controllers
 
         private JobManagerContext Context { get; }
 
-        //disabled till identity db implemented
-        // [Authorize]
         public IActionResult JobMgmt1()
         {
             var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
-            return View(jobs);
+            var apps = Context.Applications.OrderBy(a => a.ApplicationId).ToList();
+
+            JobViewModel model = new()
+            {
+                Jobs = jobs,
+                Applications = apps
+            };
+            return View(model);
         }
 
         public IActionResult Add()
@@ -63,7 +69,6 @@ namespace JAM_mkII.Areas.Admin.Controllers
             ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";
             return View(job);
         }
-
 
         [HttpGet]
         public IActionResult Delete(int id)
