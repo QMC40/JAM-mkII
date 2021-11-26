@@ -23,7 +23,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
             roleManager = roleMngr;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> UserMgmt()
         {
             List<User> users = new();
             foreach (var user in userManager.Users)
@@ -55,7 +55,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                 }
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("UserMgmt");
         }
 
         [HttpGet]
@@ -96,7 +96,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
 
                 var result = await userManager.UpdateAsync(user);
                 if (result.Succeeded)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("UserMgmt");
                 foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
             }
 
@@ -128,7 +128,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("UserMgmt");
                 foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
             }
 
@@ -150,7 +150,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                 await userManager.AddToRoleAsync(user, adminRole.Name);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("UserMgmt");
         }
 
         [HttpPost]
@@ -162,7 +162,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
             {
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("UserMgmt");
         }
 
         [HttpPost]
@@ -174,7 +174,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
             {
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("UserMgmt");
         }
 
         [HttpPost]
@@ -185,7 +185,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
             {
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("UserMgmt");
         }
 
 
@@ -208,7 +208,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                     model.OldPassword, model.NewPassword);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("UserMgmt");
                 }
                 else
                 {
