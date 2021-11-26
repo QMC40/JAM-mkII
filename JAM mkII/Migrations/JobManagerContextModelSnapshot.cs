@@ -4,16 +4,14 @@ using JAM_mkII.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JAM_mkII.Migrations
 {
     [DbContext(typeof(JobManagerContext))]
-    [Migration("20211119222323_test2")]
-    partial class test2
+    partial class JobManagerContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,250 +19,7 @@ namespace JAM_mkII.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("JAM_mkII.Models.Application", b =>
-                {
-                    b.Property<int>("ApplicationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ApplyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Disqualified")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("PassedTest")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ResultId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ApplicationId");
-
-                    b.ToTable("Applications");
-                });
-
-            modelBuilder.Entity("JAM_mkII.Models.Employment", b =>
-                {
-                    b.Property<int>("EmploymentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StopDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("EmploymentId");
-
-                    b.ToTable("Employments");
-                });
-
-            modelBuilder.Entity("JAM_mkII.Models.Job", b =>
-                {
-                    b.Property<int>("JobId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CloseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("OpenDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PositionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StoreId")
-                        .HasColumnType("int");
-
-                    b.HasKey("JobId");
-
-                    b.ToTable("Jobs");
-
-                    b.HasData(
-                        new
-                        {
-                            JobId = 1,
-                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PositionId = 2,
-                            StoreId = 2
-                        },
-                        new
-                        {
-                            JobId = 2,
-                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PositionId = 3,
-                            StoreId = 4
-                        },
-                        new
-                        {
-                            JobId = 3,
-                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PositionId = 2,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            JobId = 4,
-                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PositionId = 2,
-                            StoreId = 2
-                        });
-                });
-
-            modelBuilder.Entity("JAM_mkII.Models.Position", b =>
-                {
-                    b.Property<int>("PositionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("PositionName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PositionId");
-
-                    b.ToTable("Positions");
-
-                    b.HasData(
-                        new
-                        {
-                            PositionId = 1,
-                            PositionName = "Applicant"
-                        },
-                        new
-                        {
-                            PositionId = 2,
-                            PositionName = "Counter Staff"
-                        },
-                        new
-                        {
-                            PositionId = 3,
-                            PositionName = "Shift Manager"
-                        },
-                        new
-                        {
-                            PositionId = 4,
-                            PositionName = "Manager"
-                        },
-                        new
-                        {
-                            PositionId = 5,
-                            PositionName = "Owner"
-                        });
-                });
-
-            modelBuilder.Entity("JAM_mkII.Models.Result", b =>
-                {
-                    b.Property<int>("ResultId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Hired")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ResultId");
-
-                    b.ToTable("Results");
-
-                    b.HasData(
-                        new
-                        {
-                            ResultId = 1,
-                            Comments = "couldn't pass test",
-                            Hired = false
-                        },
-                        new
-                        {
-                            ResultId = 2,
-                            Comments = "failed to show for interview",
-                            Hired = false
-                        },
-                        new
-                        {
-                            ResultId = 3,
-                            Comments = "excellent candidate",
-                            Hired = true
-                        });
-                });
-
-            modelBuilder.Entity("JAM_mkII.Models.Store", b =>
-                {
-                    b.Property<int>("StoreId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ManagerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StaffReq")
-                        .HasColumnType("int");
-
-                    b.HasKey("StoreId");
-
-                    b.ToTable("Stores");
-
-                    b.HasData(
-                        new
-                        {
-                            StoreId = 1,
-                            Location = "Airline",
-                            ManagerId = 1,
-                            StaffReq = 2
-                        },
-                        new
-                        {
-                            StoreId = 2,
-                            Location = "Holly",
-                            ManagerId = 1,
-                            StaffReq = 4
-                        },
-                        new
-                        {
-                            StoreId = 3,
-                            Location = "Staples",
-                            ManagerId = 4,
-                            StaffReq = 4
-                        },
-                        new
-                        {
-                            StoreId = 4,
-                            Location = "SPID",
-                            ManagerId = 2,
-                            StaffReq = 6
-                        });
-                });
-
-            modelBuilder.Entity("JAM_mkII.Models.User", b =>
+            modelBuilder.Entity("JAM_mkII.Areas.Admin.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -349,10 +104,10 @@ namespace JAM_mkII.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c2e53c75-b9c6-4527-9119-75b8eed39a89",
+                            Id = "862b7b4e-2f03-48df-906e-2e59ae57f998",
                             AccessFailedCount = 0,
                             Address = "Countryside",
-                            ConcurrencyStamp = "d9ba79cf-d016-4ec2-8cdb-cfb15085948b",
+                            ConcurrencyStamp = "33f29745-2650-41a4-8422-3025903b7b30",
                             DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hotstuff@yahoops.com",
                             EmailConfirmed = false,
@@ -363,16 +118,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 1,
                             SSN = "000-00-0001",
-                            SecurityStamp = "06ac9c81-91a0-4698-8b9a-399bdf1411d8",
+                            SecurityStamp = "cd7f1370-000d-4cc5-b478-c0bef88179cd",
                             TwoFactorEnabled = false,
                             UserName = "hotstuff@yahoops.com"
                         },
                         new
                         {
-                            Id = "20cf3259-fd92-4671-9160-743eaf017141",
+                            Id = "df3f1073-57de-4c3d-be21-c7e19cac9901",
                             AccessFailedCount = 0,
                             Address = "southside",
-                            ConcurrencyStamp = "d48325e8-65fd-4cc5-8a9b-4b61697b3ed7",
+                            ConcurrencyStamp = "3885e050-de6d-4718-ba0b-7b74a32fb5a4",
                             DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Duke@yahoops.com",
                             EmailConfirmed = false,
@@ -383,16 +138,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 3,
                             SSN = "123-45-6789",
-                            SecurityStamp = "94ddb38b-12f9-4c56-b938-c034993b80a2",
+                            SecurityStamp = "8fda82c9-a920-4417-a3c7-55f0f3145d9c",
                             TwoFactorEnabled = false,
                             UserName = "Duke@yahoops.com"
                         },
                         new
                         {
-                            Id = "3957ec9c-c4bc-49b6-8c8e-2105217fead5",
+                            Id = "e8164d62-5ed5-40dc-8dee-36bb2c62cb2b",
                             AccessFailedCount = 0,
                             Address = "Portland",
-                            ConcurrencyStamp = "57ca8d01-c7d1-4009-8a48-a670e4138ce5",
+                            ConcurrencyStamp = "feca8782-7bc0-4bda-b9bc-2406a494643d",
                             DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "OMGawd@yahoops.com",
                             EmailConfirmed = false,
@@ -403,16 +158,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "987-65-4321",
-                            SecurityStamp = "7cb63150-ca0b-46fa-9968-273750af33de",
+                            SecurityStamp = "a41ae07a-be99-4333-89e0-143e9cd4f72c",
                             TwoFactorEnabled = false,
                             UserName = "OMGawd@yahoops.com"
                         },
                         new
                         {
-                            Id = "701b0641-0b2e-4fb0-90e4-8a0eca959010",
+                            Id = "91c72705-d418-4419-897e-2590d3a4ce56",
                             AccessFailedCount = 0,
                             Address = "Annaville",
-                            ConcurrencyStamp = "c56606a8-2721-4fc3-a82f-3d593d1b7e95",
+                            ConcurrencyStamp = "95c53e78-c84d-4a15-ab9a-9e594111630c",
                             DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "wyrm@yahoops.com",
                             EmailConfirmed = false,
@@ -423,9 +178,252 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "556-28-1867",
-                            SecurityStamp = "c0bad2bd-9a43-4ee6-a9a7-7bf35b9e54bd",
+                            SecurityStamp = "e825580c-3c82-4c06-b1d0-8b27455fc6a7",
                             TwoFactorEnabled = false,
                             UserName = "wyrm@yahoops.com"
+                        });
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Application", b =>
+                {
+                    b.Property<int>("ApplicationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ApplyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Disqualified")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("PassedTest")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ResultId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ApplicationId");
+
+                    b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Employment", b =>
+                {
+                    b.Property<int>("EmploymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StopDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("EmploymentId");
+
+                    b.ToTable("Employments");
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Job", b =>
+                {
+                    b.Property<int>("JobId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CloseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("OpenDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JobId");
+
+                    b.ToTable("Jobs");
+
+                    b.HasData(
+                        new
+                        {
+                            JobId = 1,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 2,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            JobId = 2,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 3,
+                            StoreId = 4
+                        },
+                        new
+                        {
+                            JobId = 3,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 2,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            JobId = 4,
+                            CloseDate = new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OpenDate = new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PositionId = 2,
+                            StoreId = 2
+                        });
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Position", b =>
+                {
+                    b.Property<int>("PositionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("PositionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PositionId");
+
+                    b.ToTable("Positions");
+
+                    b.HasData(
+                        new
+                        {
+                            PositionId = 1,
+                            PositionName = "Applicant"
+                        },
+                        new
+                        {
+                            PositionId = 2,
+                            PositionName = "Counter Staff"
+                        },
+                        new
+                        {
+                            PositionId = 3,
+                            PositionName = "Shift Manager"
+                        },
+                        new
+                        {
+                            PositionId = 4,
+                            PositionName = "Manager"
+                        },
+                        new
+                        {
+                            PositionId = 5,
+                            PositionName = "Owner"
+                        });
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Result", b =>
+                {
+                    b.Property<int>("ResultId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Hired")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ResultId");
+
+                    b.ToTable("Results");
+
+                    b.HasData(
+                        new
+                        {
+                            ResultId = 1,
+                            Comments = "couldn't pass test",
+                            Hired = false
+                        },
+                        new
+                        {
+                            ResultId = 2,
+                            Comments = "failed to show for interview",
+                            Hired = false
+                        },
+                        new
+                        {
+                            ResultId = 3,
+                            Comments = "excellent candidate",
+                            Hired = true
+                        });
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Store", b =>
+                {
+                    b.Property<int>("StoreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StaffReq")
+                        .HasColumnType("int");
+
+                    b.HasKey("StoreId");
+
+                    b.ToTable("Stores");
+
+                    b.HasData(
+                        new
+                        {
+                            StoreId = 1,
+                            Location = "Airline",
+                            ManagerId = 1,
+                            StaffReq = 2
+                        },
+                        new
+                        {
+                            StoreId = 2,
+                            Location = "Holly",
+                            ManagerId = 1,
+                            StaffReq = 4
+                        },
+                        new
+                        {
+                            StoreId = 3,
+                            Location = "Staples",
+                            ManagerId = 4,
+                            StaffReq = 4
+                        },
+                        new
+                        {
+                            StoreId = 4,
+                            Location = "SPID",
+                            ManagerId = 2,
+                            StaffReq = 6
                         });
                 });
 
@@ -571,7 +569,7 @@ namespace JAM_mkII.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("JAM_mkII.Models.User", null)
+                    b.HasOne("JAM_mkII.Areas.Admin.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -580,7 +578,7 @@ namespace JAM_mkII.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("JAM_mkII.Models.User", null)
+                    b.HasOne("JAM_mkII.Areas.Admin.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -595,7 +593,7 @@ namespace JAM_mkII.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JAM_mkII.Models.User", null)
+                    b.HasOne("JAM_mkII.Areas.Admin.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -604,7 +602,7 @@ namespace JAM_mkII.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("JAM_mkII.Models.User", null)
+                    b.HasOne("JAM_mkII.Areas.Admin.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

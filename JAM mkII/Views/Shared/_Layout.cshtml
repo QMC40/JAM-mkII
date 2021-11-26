@@ -1,6 +1,7 @@
 ﻿@using JAM_mkII.Models.DomainModels
 @using JAM_mkII.Models.ViewModels
 @using Microsoft.AspNetCore.Identity
+@using JAM_mkII.Areas.Admin.Models
 @{
     // use current controller or area to determine if tab is active
     var current = ViewContext.RouteData.Values["area"]?.ToString() ??

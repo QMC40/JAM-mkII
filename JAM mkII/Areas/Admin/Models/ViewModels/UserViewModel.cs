@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 
-namespace JAM_mkII.Areas.Admin.Models
+namespace JAM_mkII.Areas.Admin.Models.ViewModels
 {
     public class UserViewModel
     {

@@ -1,4 +1,6 @@
-﻿using JAM_mkII.Models;
+﻿using System;
+using JAM_mkII.Areas.Admin.Models;
+using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +11,10 @@ namespace JAM_mkII.Controllers
     {
         private readonly UserManager<User> userManager;
 
-        public ApplicationController(JobManagerContext ctx)
+        public ApplicationController(UserManager<User> userMngr,
+            JobManagerContext ctx)
         {
+            userManager = userMngr;
             Context = ctx;
         }
 
@@ -25,13 +29,20 @@ namespace JAM_mkII.Controllers
         [HttpGet]
         public IActionResult Apply(Job job)
         {
-            var id = userManager.GetUserId(User);
-            var jobApp = new Application
+            try
             {
-                JobId = job.JobId,
-
-            };
-            return View(jobApp);
+                var id = userManager.GetUserId(User);
+                var jobApp = new Application
+                {
+                    UserId = id,
+                    JobId = job.JobId
+                };
+                return View(jobApp);
+            }
+            catch (Exception e)
+            {
+                return Ok("nope");
+            }
         }
 
 

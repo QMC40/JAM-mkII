@@ -27,11 +27,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Data\" />
+      <Page Include="Areas\Admin\Views\JobAdmin\JobMgmt.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
-      <Page Include="Areas\Admin\Views\JobAdmin\JobMgmt.cshtml" />
+      <Folder Include="Data\Migrations\" />
     </ItemGroup>
 
 </Project>

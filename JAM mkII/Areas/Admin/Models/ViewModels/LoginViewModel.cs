@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JAM_mkII.Models.ViewModels
+namespace JAM_mkII.Areas.Admin.Models.ViewModels
 {
     public class LoginViewModel
     {
