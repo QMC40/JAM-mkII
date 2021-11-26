@@ -1,3 +1,4 @@
+using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Builder;

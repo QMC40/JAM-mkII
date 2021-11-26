@@ -1,6 +1,7 @@
 ﻿@using JAM_mkII.Models.DomainModels
 @using JAM_mkII.Models.ViewModels
 @using Microsoft.AspNetCore.Identity
+@using JAM_mkII.Areas.Admin.Models
 @{
     // use current controller or area to determine if tab is active
     var current = ViewContext.RouteData.Values["area"]?.ToString() ??
@@ -28,63 +29,59 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase" asp-controller="JobList" asp-area="" asp-action="Index">Job Listings</a>
-                </li>
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="Benefits">Benefits</a>
-                </li>
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="About">About</a>
-                </li>
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase" asp-controller="JobList" asp-area="" asp-action="JobAdmin">Admin</a>
-                </li>
-                </ul>
-                @inject SignInManager<User> signInManager
-                @if (signInManager.IsSignedIn(User))
-                {
-                    // signed-in user - Log Out button and username
                     <li class="nav-item px-lg-4">
-                        <form method="post" asp-action="Logout" asp-controller="Account"
-                              asp-area="">
-                            <input type="submit" value="LOG OUT"
-                                   class="btn btn-outline-light"/>
-                            <span class="text-light">@User.Identity.Name</span>
-                        </form>
+                        <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link" asp-action="ChangePassword" asp-controller="User" asp-area="Admin">
-                            <span class="fas fa-cog"></span>&nbsp;Change Password
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    // get current action
-                    var action = ViewContext.RouteData.Values["action"]?.ToString();
-                    // anonymous user - Register link and Log In button
-                    <li class="nav-item px-lg-4 @Nav.Active("Register", action)">
-                        <a asp-action="Register" asp-controller="Account"
-                           asp-area="" class="nav-link">
-                            REGISTER
-                        </a>
+                        <a class="nav-link text-uppercase" asp-controller="JobList" asp-area="" asp-action="Index">Job Listings</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a asp-action="Login" asp-controller="Account"
-                           asp-area="" class="btn btn-outline-light">
-                            LOG IN
+                        <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="Benefits">Benefits</a>
+                    </li>
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase" asp-controller="Home" asp-area="" asp-action="About">About</a>
+                    </li>
+                    @inject SignInManager<User> signInManager
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        // signed-in user - Log Out button and username
+                        <li class="nav-item px-lg-4">
+                            <form method="post" asp-action="Logout" asp-controller="Account"
+                                  asp-area="">
+                                <input type="submit" value="LOG OUT"
+                                       class="btn btn-outline-light"/>
+                                <span class="text-light">@User.Identity.Name</span>
+                            </form>
+                        </li>
+                        <li class="nav-item px-lg-4">
+                            <a class="nav-link" asp-action="ChangePassword" asp-controller="User" asp-area="Admin">
+                                <span class="fas fa-cog"></span>&nbsp;CHANGE PASSWORD
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        // get current action
+                        var action = ViewContext.RouteData.Values["action"]?.ToString();
+                        // anonymous user - Register link and Log In button
+                        <li class="nav-item px-lg-4 @Nav.Active("Register", action)">
+                            <a asp-action="Register" asp-controller="Account"
+                               asp-area="" class="nav-link">
+                                REGISTER
+                            </a>
+                        </li>
+                        <li class="nav-item px-lg-4">
+                            <a asp-action="Login" asp-controller="Account"
+                               asp-area="" class="btn btn-outline-light">
+                                LOG IN
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item px-lg-4 @Nav.Active("Admin", current)">
+                        <a class="nav-link" asp-action="UserMgmt" asp-controller="User" asp-area="Admin">
+                            <span class="fas fa-cog"></span>&nbsp;ADMIN
                         </a>
                     </li>
-                }
-                <li class="nav-item px-lg-4 @Nav.Active("Admin", current)">
-                    <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
-                        <span class="fas fa-cog"></span>&nbsp;ADMIN
-                    </a>
-                </li>
                 </ul>
             </div>
         </div>

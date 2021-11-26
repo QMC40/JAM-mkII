@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using JAM_mkII.Areas.Admin.Models;
+using JAM_mkII.Areas.Admin.Models.ViewModels;
 using JAM_mkII.Models.DomainModels;
 using JAM_mkII.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;

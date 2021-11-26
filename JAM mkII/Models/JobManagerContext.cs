@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

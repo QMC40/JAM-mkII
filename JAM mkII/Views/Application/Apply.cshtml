@@ -8,10 +8,8 @@
         <div class="col-md-4">
             <form asp-action="Apply">
                 <input type="hidden" asp-for="ApplicationId"/>
-                <div class="form-group">
-                    <label asp-for="UserId" class="control-label"></label>
-                    <input asp-for="UserId" type="text" class="form-control" readonly/>
-                </div>
+                
+                    <input asp-for="UserId" type="text" class="form-control" hidden readonly/>
                 <div class="form-group">
                     <label asp-for="JobId" class="control-label"></label>
                     <input asp-for="JobId" type="text" class="form-control" readonly/>

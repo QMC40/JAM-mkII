@@ -8,6 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Remove="Areas\Admin\Views\JobAdmin\JobMgmt.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Areas\Admin\Views\JobAdmin\JobMgmt" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.12" />
         <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
@@ -19,9 +27,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Areas\Admin\Controllers\" />
-        <Folder Include="Areas\Admin\Models\" />
-        <Folder Include="Data\" />
+      <Page Include="Areas\Admin\Views\JobAdmin\JobMgmt.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data\Migrations\" />
     </ItemGroup>
 
 </Project>
