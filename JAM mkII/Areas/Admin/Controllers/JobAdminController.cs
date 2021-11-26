@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
@@ -25,8 +24,8 @@ namespace JAM_mkII.Areas.Admin.Controllers
         private JobManagerContext Context { get; }
 
         //disabled till identity db implemented
-        //[Authorize]
-        public async Task<IActionResult> JobMgmt()
+        // [Authorize]
+        public IActionResult JobMgmt()
         {
             var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
             return View(jobs);

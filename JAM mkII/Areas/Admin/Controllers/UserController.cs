@@ -3,13 +3,12 @@ using System.Threading.Tasks;
 using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Models.DomainModels;
 using JAM_mkII.Models.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JAM_mkII.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -187,7 +186,6 @@ namespace JAM_mkII.Areas.Admin.Controllers
 
             return RedirectToAction("UserMgmt");
         }
-
 
         [HttpGet]
         public IActionResult ChangePassword()
