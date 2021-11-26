@@ -187,5 +187,39 @@ namespace JAM_mkII.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            var subj = new ChangePasswordViewModel();
+
+            return View(subj);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(
+            ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await userManager.GetUserAsync(User);
+                var result = await userManager.ChangePasswordAsync(user,
+                    model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+
+            return View(model);
+        }
     }
 }
