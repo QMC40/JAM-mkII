@@ -62,8 +62,10 @@ else
         <thead>
             <tr>
                 <th>Application Id</th>
-                <th>Applicant Id</th>
+                <th>Applicant</th>
                 <th>Job Id</th>
+                <th>Position</th>
+                <th>Store</th>
                 <th>Apply date</th>
                 <th>Qualified</th>
                 <th>Passed test</th>
@@ -74,9 +76,11 @@ else
             {
                 <tr>
                     <td>@app.ApplicationId</td>
-                    <td>@app.UserId</td>
+                    <td>@app.ApplicantName</td>
                     <td>@app.JobId</td>
-                    <td>@app.ApplyDate</td>
+                    <td>@app.Position.PositionName.PositionName</td>
+                    <td>@app.Position.PositionName.PositionName</td>
+                    <td>@app.ApplyDate.ToShortDateString()</td>
                     <td>@app.Disqualified</td>
                     <td>@app.PassedTest</td>
                 </tr>
