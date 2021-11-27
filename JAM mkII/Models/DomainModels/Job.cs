@@ -11,9 +11,11 @@ namespace JAM_mkII.Models.DomainModels
         [ForeignKey(nameof(PositionName))]
         public int PositionId { get; set; }
         public Position PositionName { get; set; }
+
         [ForeignKey(nameof(StoreName))]
         public int StoreId { get; set; }
         public Store StoreName { get; set; }
+
         public DateTime OpenDate
         { get; set; }
         public DateTime CloseDate { get; set; }
