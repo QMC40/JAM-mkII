@@ -1,18 +1,22 @@
 ﻿using System.Linq;
 using JAM_mkII.Areas.Admin.Models;
+using JAM_mkII.Areas.Admin.Models.ViewModels;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JAM_mkII.Areas.Admin.Controllers
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class JobAdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
+        private JobManagerContext Context { get; }
 
         public JobAdminController(JobManagerContext ctx, UserManager<User> userMngr,
             RoleManager<IdentityRole> roleMngr)
@@ -22,14 +26,27 @@ namespace JAM_mkII.Areas.Admin.Controllers
             Context = ctx;
         }
 
-        private JobManagerContext Context { get; }
-
-        //disabled till identity db implemented
-        // [Authorize]
-        public IActionResult JobMgmt1()
+        public IActionResult JobMgmt()
         {
-            var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
-            return View(jobs);
+            var jobs =
+                Context.Jobs
+                    .Include(p => p.PositionName)
+                    .Include(s => s.StoreName)
+                    .OrderBy(j => j.JobId)
+                    .ToList();
+            var apps =
+                Context.Applications
+                    // .Include(p => p.PositionName)
+                    // .Include(s => s.StoreName)
+                    .OrderBy(a => a.ApplicationId)
+                    .ToList();
+
+            JobViewModel model = new()
+            {
+                Jobs = jobs,
+                Applications = apps,
+            };
+            return View(model);
         }
 
         public IActionResult Add()
@@ -63,7 +80,6 @@ namespace JAM_mkII.Areas.Admin.Controllers
             ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";
             return View(job);
         }
-
 
         [HttpGet]
         public IActionResult Delete(int id)

@@ -6,7 +6,7 @@ namespace JAM_mkII.Models.DomainModels
     {
         [Key] public int StoreId { get; set; }
 
-        public string Location { get; set; }
+        public string StoreName { get; set; }
         public int ManagerId { get; set; }
         public int StaffReq { get; set; }
     }

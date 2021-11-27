@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
 using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Areas.Admin.Models.ViewModels;
-using JAM_mkII.Models.DomainModels;
-using JAM_mkII.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,7 +27,7 @@ namespace JAM_mkII.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new User
                 {

@@ -8,7 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Remove="Areas\Admin\Views\JobAdmin\JobMgmt.cshtml" />
+      <Compile Remove="Data\**" />
+      <Content Remove="Data\**" />
+      <EmbeddedResource Remove="Data\**" />
+      <None Remove="Data\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -24,14 +27,6 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Page Include="Areas\Admin\Views\JobAdmin\JobMgmt.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Data\Migrations\" />
     </ItemGroup>
 
 </Project>

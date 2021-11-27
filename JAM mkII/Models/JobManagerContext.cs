@@ -20,19 +20,8 @@ namespace JAM_mkII.Models
         public DbSet<Employment> Employments { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Position> Positions { get; set; }
-
         public DbSet<Store> Stores { get; set; }
-
-        // public DbSet<User> Users { get; set; }
         public DbSet<Result> Results { get; set; }
-
-        //delete
-        // protected override void OnConfiguring(
-        //     DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     // code that configures the DbContext goes here
-        //     base.OnConfiguring(optionsBuilder);
-        // }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -131,28 +120,28 @@ namespace JAM_mkII.Models
                 new Store
                 {
                     StoreId = 1,
-                    Location = "Airline",
+                    StoreName = "Airline",
                     ManagerId = 1,
                     StaffReq = 2
                 },
                 new Store
                 {
                     StoreId = 2,
-                    Location = "Holly",
+                    StoreName = "Holly",
                     ManagerId = 1,
                     StaffReq = 4
                 },
                 new Store
                 {
                     StoreId = 3,
-                    Location = "Staples",
+                    StoreName = "Staples",
                     ManagerId = 4,
                     StaffReq = 4
                 },
                 new Store
                 {
                     StoreId = 4,
-                    Location = "SPID",
+                    StoreName = "SPID",
                     ManagerId = 2,
                     StaffReq = 6
                 }

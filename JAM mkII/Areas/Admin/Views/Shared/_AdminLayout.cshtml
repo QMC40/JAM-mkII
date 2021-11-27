@@ -12,14 +12,14 @@
 
 <ul class="nav nav-tabs mt-2 mb-3">
     <li class="nav-item">
-        <a asp-action="UserMgmt" asp-controller="User"
+        <a asp-action="UserMgmt" asp-controller="User" 
            class="nav-link @Nav.Active("User", current)">
             Manage Users
         </a>
     </li>
-    <li class="nav-item">
-        <a asp-action="JobMgmt1" asp-controller="JobAdmin"
-           class="nav-link @Nav.Active("User", current)">
+    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Manage Jobs" ? "active nav-item" : "nav-item")">
+        <a asp-action="JobMgmt" asp-controller="JobAdmin"
+           class="nav-link @Nav.Active("JobAdmin", current)">
             Manage Jobs
         </a>
     </li>

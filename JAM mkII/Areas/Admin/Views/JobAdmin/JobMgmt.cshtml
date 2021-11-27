@@ -1,0 +1,90 @@
+﻿@model JAM_mkII.Areas.Admin.Models.ViewModels.JobViewModel
+@{
+    ViewData["Title"] = " | Manage Jobs";
+}
+
+<h1 class="mb-2">Manage Jobs</h1>
+
+<h5 class="mt-2">
+    <a asp-action="Add">Add a job</a>
+</h5>
+
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Job no</th>
+            <th>Position</th>
+            <th>Store</th>
+            <th>Open</th>
+            <th>Close</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Jobs.Count() == 0)
+        {
+            <tr>
+                <td colspan="5">There are no jobs currently listed.</td>
+            </tr>
+        }
+        else
+
+        {
+            foreach (var item in Model.Jobs)
+            {
+                <tr>
+                    <td>@item.JobId</td>
+                    <td>@item.PositionName.PositionName</td>
+                    <td>@item.StoreName.StoreName</td>
+                    <td>@item.OpenDate.ToShortDateString()</td>
+                    <td>@item.CloseDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.JobId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.JobId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h1 class="mb-2">Manage Applications</h1>
+
+@if (Model.Applications.Count() == 0)
+{
+    <tr>
+        <td colspan="5">There are no applications currently listed.</td>
+    </tr>
+}
+else
+{
+    <table class="table table-bordered table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Application Id</th>
+                <th>Applicant</th>
+                <th>Job Id</th>
+                <th>Position</th>
+                <th>Store</th>
+                <th>Apply date</th>
+                <th>Qualified</th>
+                <th>Passed test</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var app in Model.Applications)
+            {
+                <tr>
+                    <td>@app.ApplicationId</td>
+                    <td>@app.ApplicantName</td>
+                    <td>@app.JobId</td>
+                    <td>@app.Position.PositionName.PositionName</td>
+                    <td>@app.Position.PositionName.PositionName</td>
+                    <td>@app.ApplyDate.ToShortDateString()</td>
+                    <td>@app.Disqualified</td>
+                    <td>@app.PassedTest</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

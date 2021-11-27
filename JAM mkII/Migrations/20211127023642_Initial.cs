@@ -8,24 +8,6 @@ namespace JAM_mkII.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Applications",
-                columns: table => new
-                {
-                    ApplicationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JobId = table.Column<int>(type: "int", nullable: false),
-                    ApplyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ResultId = table.Column<int>(type: "int", nullable: false),
-                    Disqualified = table.Column<bool>(type: "bit", nullable: false),
-                    PassedTest = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Applications", x => x.ApplicationId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -87,22 +69,6 @@ namespace JAM_mkII.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Jobs",
-                columns: table => new
-                {
-                    JobId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PositionId = table.Column<int>(type: "int", nullable: false),
-                    StoreId = table.Column<int>(type: "int", nullable: false),
-                    OpenDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CloseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Jobs", x => x.JobId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Positions",
                 columns: table => new
                 {
@@ -135,7 +101,7 @@ namespace JAM_mkII.Migrations
                 {
                     StoreId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StoreName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ManagerId = table.Column<int>(type: "int", nullable: false),
                     StaffReq = table.Column<int>(type: "int", nullable: false)
                 },
@@ -250,26 +216,68 @@ namespace JAM_mkII.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Jobs",
+                columns: table => new
+                {
+                    JobId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PositionId = table.Column<int>(type: "int", nullable: false),
+                    StoreId = table.Column<int>(type: "int", nullable: false),
+                    OpenDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CloseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Jobs", x => x.JobId);
+                    table.ForeignKey(
+                        name: "FK_Jobs_Positions_PositionId",
+                        column: x => x.PositionId,
+                        principalTable: "Positions",
+                        principalColumn: "PositionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Jobs_Stores_StoreId",
+                        column: x => x.StoreId,
+                        principalTable: "Stores",
+                        principalColumn: "StoreId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Applications",
+                columns: table => new
+                {
+                    ApplicationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicantName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JobId = table.Column<int>(type: "int", nullable: false),
+                    ApplyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ResultId = table.Column<int>(type: "int", nullable: false),
+                    Disqualified = table.Column<bool>(type: "bit", nullable: false),
+                    PassedTest = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Applications", x => x.ApplicationId);
+                    table.ForeignKey(
+                        name: "FK_Applications_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "JobId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "DoB", "Email", "EmailConfirmed", "FName", "LName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Position", "SSN", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "862b7b4e-2f03-48df-906e-2e59ae57f998", 0, "Countryside", "33f29745-2650-41a4-8422-3025903b7b30", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hotstuff@yahoops.com", false, "Trogdor", "Burninator", false, null, null, null, null, "555-1212", false, 1, "000-00-0001", "cd7f1370-000d-4cc5-b478-c0bef88179cd", false, "hotstuff@yahoops.com" },
-                    { "df3f1073-57de-4c3d-be21-c7e19cac9901", 0, "southside", "3885e050-de6d-4718-ba0b-7b74a32fb5a4", new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Duke@yahoops.com", false, "John", "Wayne", false, null, null, null, null, "555-4242", false, 3, "123-45-6789", "8fda82c9-a920-4417-a3c7-55f0f3145d9c", false, "Duke@yahoops.com" },
-                    { "e8164d62-5ed5-40dc-8dee-36bb2c62cb2b", 0, "Portland", "feca8782-7bc0-4bda-b9bc-2406a494643d", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "OMGawd@yahoops.com", false, "Tammy", "Baker", false, null, null, null, null, "555-3578", false, 2, "987-65-4321", "a41ae07a-be99-4333-89e0-143e9cd4f72c", false, "OMGawd@yahoops.com" },
-                    { "91c72705-d418-4419-897e-2590d3a4ce56", 0, "Annaville", "95c53e78-c84d-4a15-ab9a-9e594111630c", new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wyrm@yahoops.com", false, "Larry", "Linville", false, null, null, null, null, "555-8946", false, 2, "556-28-1867", "e825580c-3c82-4c06-b1d0-8b27455fc6a7", false, "wyrm@yahoops.com" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Jobs",
-                columns: new[] { "JobId", "CloseDate", "OpenDate", "PositionId", "StoreId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 },
-                    { 2, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 4 },
-                    { 3, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1 },
-                    { 4, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 }
+                    { "b2aec737-93fe-41e5-a4ad-cf1ca6c7bf38", 0, "Countryside", "b5d93884-d4bd-4bfc-aac7-e4cf01507519", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hotstuff@yahoops.com", false, "Trogdor", "Burninator", false, null, null, null, null, "555-1212", false, 1, "000-00-0001", "f77e1869-2bef-46d4-8abe-098ebb80d55f", false, "hotstuff@yahoops.com" },
+                    { "128b024b-2926-42e8-87a7-532184a4c4ed", 0, "southside", "d9239a7f-9d8c-4c68-ad76-b21af41e6212", new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Duke@yahoops.com", false, "John", "Wayne", false, null, null, null, null, "555-4242", false, 3, "123-45-6789", "51b7341a-c7c9-4128-80f6-89ed01e55b1d", false, "Duke@yahoops.com" },
+                    { "bd9c56e5-3fd4-4d05-8193-578151286a5c", 0, "Portland", "5a7508cb-9b35-4336-b73b-429f66d80efa", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "OMGawd@yahoops.com", false, "Tammy", "Baker", false, null, null, null, null, "555-3578", false, 2, "987-65-4321", "66bfe60b-d2c3-4c37-a06d-ac7ca65e48f1", false, "OMGawd@yahoops.com" },
+                    { "7f15b052-5fea-4e95-86a9-3886d7acd0b9", 0, "Annaville", "ddb3d748-0498-4806-b8fc-cc0445d9dff4", new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wyrm@yahoops.com", false, "Larry", "Linville", false, null, null, null, null, "555-8946", false, 2, "556-28-1867", "58544eb0-1702-4796-a296-d0baab408382", false, "wyrm@yahoops.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -277,11 +285,11 @@ namespace JAM_mkII.Migrations
                 columns: new[] { "PositionId", "PositionName" },
                 values: new object[,]
                 {
-                    { 5, "Owner" },
-                    { 4, "Manager" },
-                    { 2, "Counter Staff" },
                     { 1, "Applicant" },
-                    { 3, "Shift Manager" }
+                    { 2, "Counter Staff" },
+                    { 3, "Shift Manager" },
+                    { 4, "Manager" },
+                    { 5, "Owner" }
                 });
 
             migrationBuilder.InsertData(
@@ -296,14 +304,30 @@ namespace JAM_mkII.Migrations
 
             migrationBuilder.InsertData(
                 table: "Stores",
-                columns: new[] { "StoreId", "Location", "ManagerId", "StaffReq" },
+                columns: new[] { "StoreId", "ManagerId", "StaffReq", "StoreName" },
                 values: new object[,]
                 {
-                    { 3, "Staples", 4, 4 },
-                    { 1, "Airline", 1, 2 },
-                    { 2, "Holly", 1, 4 },
-                    { 4, "SPID", 2, 6 }
+                    { 1, 1, 2, "Airline" },
+                    { 2, 1, 4, "Holly" },
+                    { 3, 4, 4, "Staples" },
+                    { 4, 2, 6, "SPID" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Jobs",
+                columns: new[] { "JobId", "CloseDate", "OpenDate", "PositionId", "StoreId" },
+                values: new object[,]
+                {
+                    { 3, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 1 },
+                    { 1, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 },
+                    { 4, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 },
+                    { 2, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 4 }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Applications_JobId",
+                table: "Applications",
+                column: "JobId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -343,6 +367,16 @@ namespace JAM_mkII.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jobs_PositionId",
+                table: "Jobs",
+                column: "PositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jobs_StoreId",
+                table: "Jobs",
+                column: "StoreId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -369,22 +403,22 @@ namespace JAM_mkII.Migrations
                 name: "Employments");
 
             migrationBuilder.DropTable(
-                name: "Jobs");
-
-            migrationBuilder.DropTable(
-                name: "Positions");
-
-            migrationBuilder.DropTable(
                 name: "Results");
 
             migrationBuilder.DropTable(
-                name: "Stores");
+                name: "Jobs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Positions");
+
+            migrationBuilder.DropTable(
+                name: "Stores");
         }
     }
 }

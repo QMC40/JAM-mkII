@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
@@ -23,18 +24,22 @@ namespace JAM_mkII.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+
             return View();
         }
 
         [HttpGet]
-        public IActionResult Apply(Job job)
+        public async Task<IActionResult> Apply(Job job)
         {
             //TRY CATCH FOR TS REMOVE FOR TURN IN XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             try
             {
+                User user = await userManager.GetUserAsync(User);
+                var name = user.FName + " " + user.LName;
                 var id = userManager.GetUserId(User);
                 var jobApp = new Application
                 {
+                    ApplicantName = name,
                     UserId = id,
                     JobId = job.JobId
                 };
