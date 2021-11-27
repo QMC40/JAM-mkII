@@ -1,6 +1,5 @@
 using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Models;
-using JAM_mkII.Models.DomainModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;

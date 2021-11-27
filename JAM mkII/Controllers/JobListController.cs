@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using JAM_mkII.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JAM_mkII.Controllers
 {
@@ -17,7 +18,9 @@ namespace JAM_mkII.Controllers
         // GET
         public IActionResult Index()
         {
-            var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
+            var jobs = Context.Jobs.Include(p => p.PositionName).Include(s => s.StoreName)
+                .OrderBy(j => j.JobId)
+                .ToList();
             return View(jobs);
         }
 

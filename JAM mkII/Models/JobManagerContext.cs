@@ -131,28 +131,28 @@ namespace JAM_mkII.Models
                 new Store
                 {
                     StoreId = 1,
-                    Location = "Airline",
+                    StoreName = "Airline",
                     ManagerId = 1,
                     StaffReq = 2
                 },
                 new Store
                 {
                     StoreId = 2,
-                    Location = "Holly",
+                    StoreName = "Holly",
                     ManagerId = 1,
                     StaffReq = 4
                 },
                 new Store
                 {
                     StoreId = 3,
-                    Location = "Staples",
+                    StoreName = "Staples",
                     ManagerId = 4,
                     StaffReq = 4
                 },
                 new Store
                 {
                     StoreId = 4,
-                    Location = "SPID",
+                    StoreName = "SPID",
                     ManagerId = 2,
                     StaffReq = 6
                 }

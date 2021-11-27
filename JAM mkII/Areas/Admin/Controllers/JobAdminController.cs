@@ -3,17 +3,20 @@ using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Areas.Admin.Models.ViewModels;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JAM_mkII.Areas.Admin.Controllers
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class JobAdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<User> userManager;
+        private JobManagerContext Context { get; }
 
         public JobAdminController(JobManagerContext ctx, UserManager<User> userMngr,
             RoleManager<IdentityRole> roleMngr)
@@ -23,17 +26,17 @@ namespace JAM_mkII.Areas.Admin.Controllers
             Context = ctx;
         }
 
-        private JobManagerContext Context { get; }
-
         public IActionResult JobMgmt1()
         {
-            var jobs = Context.Jobs.OrderBy(j => j.JobId).ToList();
+            var jobs = Context.Jobs.Include(p => p.PositionName).Include(s => s.StoreName)
+                .OrderBy(j => j.JobId)
+                .ToList();
             var apps = Context.Applications.OrderBy(a => a.ApplicationId).ToList();
 
             JobViewModel model = new()
             {
                 Jobs = jobs,
-                Applications = apps
+                Applications = apps,
             };
             return View(model);
         }

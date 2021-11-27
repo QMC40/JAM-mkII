@@ -12,7 +12,10 @@ namespace JAM_mkII.Models.DomainModels
         [Key]
         public int ApplicationId { get; set; }
         public string UserId { get; set; }
+        public string ApplicantName { get; set; }
         public int JobId { get; set; }
+        public Job Position { get; set; }
+        // public Job Store { get; set; }
         public DateTime ApplyDate { get; set; } = DateTime.Now;
         public int ResultId { get; set; } = 1;
 

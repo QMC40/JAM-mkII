@@ -12,6 +12,7 @@
 <table class="table table-bordered table-striped table-sm">
     <thead>
         <tr>
+            <th>Job no</th>
             <th>Position</th>
             <th>Store</th>
             <th>Open</th>
@@ -32,8 +33,9 @@
             foreach (var item in Model.Jobs)
             {
                 <tr>
-                    <td>@item.PositionId</td>
-                    <td>@item.StoreId</td>
+                    <td>@item.JobId</td>
+                    <td>@item.PositionName.PositionName</td>
+                    <td>@item.StoreName.StoreName</td>
                     <td>@item.OpenDate.ToShortDateString()</td>
                     <td>@item.CloseDate.ToShortDateString()</td>
                     <td>
@@ -65,7 +67,6 @@ else
                 <th>Apply date</th>
                 <th>Qualified</th>
                 <th>Passed test</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>

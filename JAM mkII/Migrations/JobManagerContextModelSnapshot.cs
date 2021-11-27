@@ -104,10 +104,10 @@ namespace JAM_mkII.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "862b7b4e-2f03-48df-906e-2e59ae57f998",
+                            Id = "b2aec737-93fe-41e5-a4ad-cf1ca6c7bf38",
                             AccessFailedCount = 0,
                             Address = "Countryside",
-                            ConcurrencyStamp = "33f29745-2650-41a4-8422-3025903b7b30",
+                            ConcurrencyStamp = "b5d93884-d4bd-4bfc-aac7-e4cf01507519",
                             DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hotstuff@yahoops.com",
                             EmailConfirmed = false,
@@ -118,16 +118,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 1,
                             SSN = "000-00-0001",
-                            SecurityStamp = "cd7f1370-000d-4cc5-b478-c0bef88179cd",
+                            SecurityStamp = "f77e1869-2bef-46d4-8abe-098ebb80d55f",
                             TwoFactorEnabled = false,
                             UserName = "hotstuff@yahoops.com"
                         },
                         new
                         {
-                            Id = "df3f1073-57de-4c3d-be21-c7e19cac9901",
+                            Id = "128b024b-2926-42e8-87a7-532184a4c4ed",
                             AccessFailedCount = 0,
                             Address = "southside",
-                            ConcurrencyStamp = "3885e050-de6d-4718-ba0b-7b74a32fb5a4",
+                            ConcurrencyStamp = "d9239a7f-9d8c-4c68-ad76-b21af41e6212",
                             DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Duke@yahoops.com",
                             EmailConfirmed = false,
@@ -138,16 +138,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 3,
                             SSN = "123-45-6789",
-                            SecurityStamp = "8fda82c9-a920-4417-a3c7-55f0f3145d9c",
+                            SecurityStamp = "51b7341a-c7c9-4128-80f6-89ed01e55b1d",
                             TwoFactorEnabled = false,
                             UserName = "Duke@yahoops.com"
                         },
                         new
                         {
-                            Id = "e8164d62-5ed5-40dc-8dee-36bb2c62cb2b",
+                            Id = "bd9c56e5-3fd4-4d05-8193-578151286a5c",
                             AccessFailedCount = 0,
                             Address = "Portland",
-                            ConcurrencyStamp = "feca8782-7bc0-4bda-b9bc-2406a494643d",
+                            ConcurrencyStamp = "5a7508cb-9b35-4336-b73b-429f66d80efa",
                             DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "OMGawd@yahoops.com",
                             EmailConfirmed = false,
@@ -158,16 +158,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "987-65-4321",
-                            SecurityStamp = "a41ae07a-be99-4333-89e0-143e9cd4f72c",
+                            SecurityStamp = "66bfe60b-d2c3-4c37-a06d-ac7ca65e48f1",
                             TwoFactorEnabled = false,
                             UserName = "OMGawd@yahoops.com"
                         },
                         new
                         {
-                            Id = "91c72705-d418-4419-897e-2590d3a4ce56",
+                            Id = "7f15b052-5fea-4e95-86a9-3886d7acd0b9",
                             AccessFailedCount = 0,
                             Address = "Annaville",
-                            ConcurrencyStamp = "95c53e78-c84d-4a15-ab9a-9e594111630c",
+                            ConcurrencyStamp = "ddb3d748-0498-4806-b8fc-cc0445d9dff4",
                             DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "wyrm@yahoops.com",
                             EmailConfirmed = false,
@@ -178,7 +178,7 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "556-28-1867",
-                            SecurityStamp = "e825580c-3c82-4c06-b1d0-8b27455fc6a7",
+                            SecurityStamp = "58544eb0-1702-4796-a296-d0baab408382",
                             TwoFactorEnabled = false,
                             UserName = "wyrm@yahoops.com"
                         });
@@ -190,6 +190,9 @@ namespace JAM_mkII.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicantName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ApplyDate")
                         .HasColumnType("datetime2");
@@ -210,6 +213,8 @@ namespace JAM_mkII.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ApplicationId");
+
+                    b.HasIndex("JobId");
 
                     b.ToTable("Applications");
                 });
@@ -258,6 +263,10 @@ namespace JAM_mkII.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("JobId");
+
+                    b.HasIndex("PositionId");
+
+                    b.HasIndex("StoreId");
 
                     b.ToTable("Jobs");
 
@@ -383,14 +392,14 @@ namespace JAM_mkII.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ManagerId")
                         .HasColumnType("int");
 
                     b.Property<int>("StaffReq")
                         .HasColumnType("int");
+
+                    b.Property<string>("StoreName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StoreId");
 
@@ -400,30 +409,30 @@ namespace JAM_mkII.Migrations
                         new
                         {
                             StoreId = 1,
-                            Location = "Airline",
                             ManagerId = 1,
-                            StaffReq = 2
+                            StaffReq = 2,
+                            StoreName = "Airline"
                         },
                         new
                         {
                             StoreId = 2,
-                            Location = "Holly",
                             ManagerId = 1,
-                            StaffReq = 4
+                            StaffReq = 4,
+                            StoreName = "Holly"
                         },
                         new
                         {
                             StoreId = 3,
-                            Location = "Staples",
                             ManagerId = 4,
-                            StaffReq = 4
+                            StaffReq = 4,
+                            StoreName = "Staples"
                         },
                         new
                         {
                             StoreId = 4,
-                            Location = "SPID",
                             ManagerId = 2,
-                            StaffReq = 6
+                            StaffReq = 6,
+                            StoreName = "SPID"
                         });
                 });
 
@@ -556,6 +565,36 @@ namespace JAM_mkII.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Application", b =>
+                {
+                    b.HasOne("JAM_mkII.Models.DomainModels.Job", "Position")
+                        .WithMany()
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Job", b =>
+                {
+                    b.HasOne("JAM_mkII.Models.DomainModels.Position", "PositionName")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JAM_mkII.Models.DomainModels.Store", "StoreName")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PositionName");
+
+                    b.Navigation("StoreName");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
