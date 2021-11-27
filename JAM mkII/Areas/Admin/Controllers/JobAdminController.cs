@@ -26,7 +26,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
             Context = ctx;
         }
 
-        public IActionResult JobMgmt1()
+        public IActionResult JobMgmt()
         {
             var jobs =
                 Context.Jobs
@@ -74,7 +74,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                     Context.Jobs.Update(job);
 
                 Context.SaveChanges();
-                return RedirectToAction("JobMgmt1");
+                return RedirectToAction("JobMgmt");
             }
 
             ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";

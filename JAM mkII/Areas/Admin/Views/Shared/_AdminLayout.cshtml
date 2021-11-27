@@ -18,7 +18,7 @@
         </a>
     </li>
     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Manage Jobs" ? "active nav-item" : "nav-item")">
-        <a asp-action="JobMgmt1" asp-controller="JobAdmin"
+        <a asp-action="JobMgmt" asp-controller="JobAdmin"
            class="nav-link @Nav.Active("JobAdmin", current)">
             Manage Jobs
         </a>
