@@ -28,10 +28,18 @@ namespace JAM_mkII.Areas.Admin.Controllers
 
         public IActionResult JobMgmt1()
         {
-            var jobs = Context.Jobs.Include(p => p.PositionName).Include(s => s.StoreName)
-                .OrderBy(j => j.JobId)
-                .ToList();
-            var apps = Context.Applications.OrderBy(a => a.ApplicationId).ToList();
+            var jobs =
+                Context.Jobs
+                    .Include(p => p.PositionName)
+                    .Include(s => s.StoreName)
+                    .OrderBy(j => j.JobId)
+                    .ToList();
+            var apps =
+                Context.Applications
+                    // .Include(p => p.PositionName)
+                    // .Include(s => s.StoreName)
+                    .OrderBy(a => a.ApplicationId)
+                    .ToList();
 
             JobViewModel model = new()
             {
