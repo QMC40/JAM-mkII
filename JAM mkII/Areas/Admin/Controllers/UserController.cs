@@ -84,23 +84,28 @@ namespace JAM_mkII.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await userManager.FindByNameAsync(model.Email);
-                user.Email = model.Email;
-                user.FName = model.FName;
-                user.LName = model.LName;
-                user.SSN = model.SSN;
-                user.DoB = model.DoB;
-                user.Address = model.Address;
-                user.PhoneNumber = model.PhoneNumber;
+                var user = await userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    user.Email = model.Email;
+                    user.FName = model.FName;
+                    user.LName = model.LName;
+                    user.SSN = model.SSN;
+                    user.DoB = model.DoB;
+                    user.Address = model.Address;
+                    user.PhoneNumber = model.PhoneNumber;
 
-                var result = await userManager.UpdateAsync(user);
-                if (result.Succeeded)
-                    return RedirectToAction("UserMgmt");
-                foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
+                    var result = await userManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                        return RedirectToAction("UserMgmt");
+                    foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
+                }
+                else
+
+                {
+                    return RedirectToAction("Edit", model);
+                }
             }
-
-            return Ok("yep");
-            //return View(model);
         }
 
         [HttpGet]

@@ -21,12 +21,6 @@ namespace JAM_mkII.Controllers
 
         private JobManagerContext Context { get; }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-
-            return View();
-        }
 
         [HttpGet]
         public async Task<IActionResult> Apply(Job job)
@@ -35,11 +29,12 @@ namespace JAM_mkII.Controllers
             try
             {
                 User user = await userManager.GetUserAsync(User);
-                var name = user.FName + " " + user.LName;
+                ViewBag.name = user.FName + " " + user.LName;
+                ViewBag.store = Context.Stores.Find(job.StoreId).StoreName;
+                ViewBag.position = Context.Positions.Find(job.PositionId).PositionName;
                 var id = userManager.GetUserId(User);
                 var jobApp = new Application
                 {
-                    ApplicantName = name,
                     UserId = id,
                     JobId = job.JobId
                 };
