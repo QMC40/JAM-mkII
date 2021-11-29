@@ -64,6 +64,7 @@ namespace JAM_mkII.Controllers
         public IActionResult LogIn(string returnURL = "")
         {
             var model = new LoginViewModel { ReturnUrl = returnURL };
+            ViewBag.action = "Login";
             return View(model);
         }
 

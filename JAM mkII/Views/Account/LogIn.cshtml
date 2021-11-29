@@ -1,6 +1,7 @@
 ﻿@model JAM_mkII.Areas.Admin.Models.ViewModels.LoginViewModel
 @{
-    ViewBag.Title = "Login";
+    string title = ViewBag.action;
+    ViewBag.Title = title;
 }
 <h1>Login</h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

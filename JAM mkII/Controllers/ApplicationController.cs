@@ -25,16 +25,23 @@ namespace JAM_mkII.Controllers
         public async Task<IActionResult> Apply(Job job)
         {
             var user = await userManager.GetUserAsync(User);
-            ViewBag.name = user.FName + " " + user.LName;
-            ViewBag.store = Context.Stores.Find(job.StoreId).StoreName;
-            ViewBag.position = Context.Positions.Find(job.PositionId).PositionName;
-            var id = userManager.GetUserId(User);
-            var jobApp = new Application
+            if (user == null)
             {
-                UserId = id,
-                JobId = job.JobId
-            };
-            return View(jobApp);
+                return RedirectToAction("LogIn", "Account");
+            }
+            else
+            {
+                ViewBag.name = user.FName + " " + user.LName;
+                ViewBag.store = Context.Stores.Find(job.StoreId).StoreName;
+                ViewBag.position = Context.Positions.Find(job.PositionId).PositionName;
+                var id = userManager.GetUserId(User);
+                var jobApp = new Application
+                {
+                    UserId = id,
+                    JobId = job.JobId
+                };
+                return View(jobApp);
+            }
         }
 
 
