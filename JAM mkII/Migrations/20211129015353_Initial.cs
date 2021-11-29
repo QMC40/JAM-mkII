@@ -8,6 +8,27 @@ namespace JAM_mkII.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Applications",
+                columns: table => new
+                {
+                    ApplicationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicantName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JobId = table.Column<int>(type: "int", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StoreLoc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ResultId = table.Column<int>(type: "int", nullable: false),
+                    Disqualified = table.Column<bool>(type: "bit", nullable: false),
+                    PassedTest = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Applications", x => x.ApplicationId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -244,40 +265,15 @@ namespace JAM_mkII.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Applications",
-                columns: table => new
-                {
-                    ApplicationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApplicantName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JobId = table.Column<int>(type: "int", nullable: false),
-                    ApplyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ResultId = table.Column<int>(type: "int", nullable: false),
-                    Disqualified = table.Column<bool>(type: "bit", nullable: false),
-                    PassedTest = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Applications", x => x.ApplicationId);
-                    table.ForeignKey(
-                        name: "FK_Applications_Jobs_JobId",
-                        column: x => x.JobId,
-                        principalTable: "Jobs",
-                        principalColumn: "JobId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "DoB", "Email", "EmailConfirmed", "FName", "LName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Position", "SSN", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "b2aec737-93fe-41e5-a4ad-cf1ca6c7bf38", 0, "Countryside", "b5d93884-d4bd-4bfc-aac7-e4cf01507519", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hotstuff@yahoops.com", false, "Trogdor", "Burninator", false, null, null, null, null, "555-1212", false, 1, "000-00-0001", "f77e1869-2bef-46d4-8abe-098ebb80d55f", false, "hotstuff@yahoops.com" },
-                    { "128b024b-2926-42e8-87a7-532184a4c4ed", 0, "southside", "d9239a7f-9d8c-4c68-ad76-b21af41e6212", new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Duke@yahoops.com", false, "John", "Wayne", false, null, null, null, null, "555-4242", false, 3, "123-45-6789", "51b7341a-c7c9-4128-80f6-89ed01e55b1d", false, "Duke@yahoops.com" },
-                    { "bd9c56e5-3fd4-4d05-8193-578151286a5c", 0, "Portland", "5a7508cb-9b35-4336-b73b-429f66d80efa", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "OMGawd@yahoops.com", false, "Tammy", "Baker", false, null, null, null, null, "555-3578", false, 2, "987-65-4321", "66bfe60b-d2c3-4c37-a06d-ac7ca65e48f1", false, "OMGawd@yahoops.com" },
-                    { "7f15b052-5fea-4e95-86a9-3886d7acd0b9", 0, "Annaville", "ddb3d748-0498-4806-b8fc-cc0445d9dff4", new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wyrm@yahoops.com", false, "Larry", "Linville", false, null, null, null, null, "555-8946", false, 2, "556-28-1867", "58544eb0-1702-4796-a296-d0baab408382", false, "wyrm@yahoops.com" }
+                    { "8f38a9a1-5944-4159-87d3-ab46306edb6f", 0, "Countryside", "ae2e7064-348d-4185-a87d-5ec6ed4c7ba1", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hotstuff@yahoops.com", false, "Trogdor", "Burninator", false, null, "HOTSTUFF@YAHOOPS.COM", null, null, "555-1212", false, 1, "000-00-0001", "aa1b603a-3456-4f50-9b22-50543873e31f", false, "hotstuff@yahoops.com" },
+                    { "31d888db-792e-4687-b2d9-f22702e641ae", 0, "southside", "d0378bda-58f3-47a6-bc09-034f40e10ff6", new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Duke@yahoops.com", false, "John", "Wayne", false, null, "DUKE@YAHOOPS.COM", null, null, "555-4242", false, 3, "123-45-6789", "f3bf2908-abb4-48f2-9085-8101f7127a17", false, "Duke@yahoops.com" },
+                    { "501a4259-8742-4339-b518-7c9da8823f30", 0, "Portland", "49392bcf-3193-44ba-a908-eeca118bfd70", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "OMGawd@yahoops.com", false, "Tammy", "Baker", false, null, "OMGAWD@YAHOOPS.COM", null, null, "555-3578", false, 2, "987-65-4321", "5e79efe4-65be-4f73-896a-bd4a58f7b87b", false, "OMGawd@yahoops.com" },
+                    { "dacdb058-8f8f-42dd-b3ae-0417e08f2768", 0, "Annaville", "5b1131d0-4e2c-481f-843a-efd3e395d180", new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wyrm@yahoops.com", false, "Larry", "Linville", false, null, "WYRM@YAHOOPS.COM", null, null, "555-8946", false, 2, "556-28-1867", "6fb96f6c-7fc8-46a9-9978-04b39a0e4c79", false, "wyrm@yahoops.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -323,11 +319,6 @@ namespace JAM_mkII.Migrations
                     { 4, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, 2 },
                     { 2, new DateTime(2021, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, 4 }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Applications_JobId",
-                table: "Applications",
-                column: "JobId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -403,10 +394,10 @@ namespace JAM_mkII.Migrations
                 name: "Employments");
 
             migrationBuilder.DropTable(
-                name: "Results");
+                name: "Jobs");
 
             migrationBuilder.DropTable(
-                name: "Jobs");
+                name: "Results");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

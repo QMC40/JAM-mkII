@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JAM_mkII.Migrations
 {
     [DbContext(typeof(JobManagerContext))]
-    [Migration("20211127023642_Initial")]
+    [Migration("20211129015353_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,81 +106,85 @@ namespace JAM_mkII.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b2aec737-93fe-41e5-a4ad-cf1ca6c7bf38",
+                            Id = "8f38a9a1-5944-4159-87d3-ab46306edb6f",
                             AccessFailedCount = 0,
                             Address = "Countryside",
-                            ConcurrencyStamp = "b5d93884-d4bd-4bfc-aac7-e4cf01507519",
+                            ConcurrencyStamp = "ae2e7064-348d-4185-a87d-5ec6ed4c7ba1",
                             DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hotstuff@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Trogdor",
                             LName = "Burninator",
                             LockoutEnabled = false,
+                            NormalizedEmail = "HOTSTUFF@YAHOOPS.COM",
                             PhoneNumber = "555-1212",
                             PhoneNumberConfirmed = false,
                             Position = 1,
                             SSN = "000-00-0001",
-                            SecurityStamp = "f77e1869-2bef-46d4-8abe-098ebb80d55f",
+                            SecurityStamp = "aa1b603a-3456-4f50-9b22-50543873e31f",
                             TwoFactorEnabled = false,
                             UserName = "hotstuff@yahoops.com"
                         },
                         new
                         {
-                            Id = "128b024b-2926-42e8-87a7-532184a4c4ed",
+                            Id = "31d888db-792e-4687-b2d9-f22702e641ae",
                             AccessFailedCount = 0,
                             Address = "southside",
-                            ConcurrencyStamp = "d9239a7f-9d8c-4c68-ad76-b21af41e6212",
+                            ConcurrencyStamp = "d0378bda-58f3-47a6-bc09-034f40e10ff6",
                             DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Duke@yahoops.com",
                             EmailConfirmed = false,
                             FName = "John",
                             LName = "Wayne",
                             LockoutEnabled = false,
+                            NormalizedEmail = "DUKE@YAHOOPS.COM",
                             PhoneNumber = "555-4242",
                             PhoneNumberConfirmed = false,
                             Position = 3,
                             SSN = "123-45-6789",
-                            SecurityStamp = "51b7341a-c7c9-4128-80f6-89ed01e55b1d",
+                            SecurityStamp = "f3bf2908-abb4-48f2-9085-8101f7127a17",
                             TwoFactorEnabled = false,
                             UserName = "Duke@yahoops.com"
                         },
                         new
                         {
-                            Id = "bd9c56e5-3fd4-4d05-8193-578151286a5c",
+                            Id = "501a4259-8742-4339-b518-7c9da8823f30",
                             AccessFailedCount = 0,
                             Address = "Portland",
-                            ConcurrencyStamp = "5a7508cb-9b35-4336-b73b-429f66d80efa",
+                            ConcurrencyStamp = "49392bcf-3193-44ba-a908-eeca118bfd70",
                             DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "OMGawd@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Tammy",
                             LName = "Baker",
                             LockoutEnabled = false,
+                            NormalizedEmail = "OMGAWD@YAHOOPS.COM",
                             PhoneNumber = "555-3578",
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "987-65-4321",
-                            SecurityStamp = "66bfe60b-d2c3-4c37-a06d-ac7ca65e48f1",
+                            SecurityStamp = "5e79efe4-65be-4f73-896a-bd4a58f7b87b",
                             TwoFactorEnabled = false,
                             UserName = "OMGawd@yahoops.com"
                         },
                         new
                         {
-                            Id = "7f15b052-5fea-4e95-86a9-3886d7acd0b9",
+                            Id = "dacdb058-8f8f-42dd-b3ae-0417e08f2768",
                             AccessFailedCount = 0,
                             Address = "Annaville",
-                            ConcurrencyStamp = "ddb3d748-0498-4806-b8fc-cc0445d9dff4",
+                            ConcurrencyStamp = "5b1131d0-4e2c-481f-843a-efd3e395d180",
                             DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "wyrm@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Larry",
                             LName = "Linville",
                             LockoutEnabled = false,
+                            NormalizedEmail = "WYRM@YAHOOPS.COM",
                             PhoneNumber = "555-8946",
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "556-28-1867",
-                            SecurityStamp = "58544eb0-1702-4796-a296-d0baab408382",
+                            SecurityStamp = "6fb96f6c-7fc8-46a9-9978-04b39a0e4c79",
                             TwoFactorEnabled = false,
                             UserName = "wyrm@yahoops.com"
                         });
@@ -208,15 +212,19 @@ namespace JAM_mkII.Migrations
                     b.Property<bool>("PassedTest")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Position")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ResultId")
                         .HasColumnType("int");
+
+                    b.Property<string>("StoreLoc")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ApplicationId");
-
-                    b.HasIndex("JobId");
 
                     b.ToTable("Applications");
                 });
@@ -569,34 +577,23 @@ namespace JAM_mkII.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("JAM_mkII.Models.DomainModels.Application", b =>
-                {
-                    b.HasOne("JAM_mkII.Models.DomainModels.Job", "Position")
-                        .WithMany()
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Position");
-                });
-
             modelBuilder.Entity("JAM_mkII.Models.DomainModels.Job", b =>
                 {
-                    b.HasOne("JAM_mkII.Models.DomainModels.Position", "PositionName")
+                    b.HasOne("JAM_mkII.Models.DomainModels.Position", "JobPosition")
                         .WithMany()
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JAM_mkII.Models.DomainModels.Store", "StoreName")
+                    b.HasOne("JAM_mkII.Models.DomainModels.Store", "JobStore")
                         .WithMany()
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("PositionName");
+                    b.Navigation("JobPosition");
 
-                    b.Navigation("StoreName");
+                    b.Navigation("JobStore");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

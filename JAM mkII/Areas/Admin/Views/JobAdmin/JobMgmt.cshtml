@@ -24,7 +24,7 @@
         @if (Model.Jobs.Count() == 0)
         {
             <tr>
-                <td colspan="5">There are no jobs currently listed.</td>
+                <td colspan="6">There are no jobs currently listed.</td>
             </tr>
         }
         else
@@ -34,8 +34,8 @@
             {
                 <tr>
                     <td>@item.JobId</td>
-                    <td>@item.PositionName.PositionName</td>
-                    <td>@item.StoreName.StoreName</td>
+                    <td>@item.JobPosition.PositionName</td>
+                    <td>@item.JobStore.StoreName</td>
                     <td>@item.OpenDate.ToShortDateString()</td>
                     <td>@item.CloseDate.ToShortDateString()</td>
                     <td>
@@ -53,7 +53,7 @@
 @if (Model.Applications.Count() == 0)
 {
     <tr>
-        <td colspan="5">There are no applications currently listed.</td>
+        <td colspan="8">There are no applications currently listed.</td>
     </tr>
 }
 else
@@ -69,6 +69,7 @@ else
                 <th>Apply date</th>
                 <th>Qualified</th>
                 <th>Passed test</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -78,11 +79,15 @@ else
                     <td>@app.ApplicationId</td>
                     <td>@app.ApplicantName</td>
                     <td>@app.JobId</td>
-                    <td>@app.Position.PositionName.PositionName</td>
-                    <td>@app.Position.PositionName.PositionName</td>
+                    <td>@app.Position</td>
+                    <td>@app.StoreLoc</td>
                     <td>@app.ApplyDate.ToShortDateString()</td>
                     <td>@app.Disqualified</td>
                     <td>@app.PassedTest</td>
+                    <td>
+                        <a asp-action="Review" asp-area="" asp-controller="Application" asp-route-id="@app.ApplicationId">View</a> |
+                        <a asp-action="Delete" asp-area="" asp-controller="Application" asp-route-id="@app.ApplicationId">Delete</a>
+                    </td>
                 </tr>
             }
         </tbody>

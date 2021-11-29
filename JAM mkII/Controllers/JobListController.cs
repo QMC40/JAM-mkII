@@ -18,7 +18,7 @@ namespace JAM_mkII.Controllers
         // GET
         public IActionResult Index()
         {
-            var jobs = Context.Jobs.Include(p => p.PositionName).Include(s => s.StoreName)
+            var jobs = Context.Jobs.Include(p => p.JobPosition).Include(s => s.JobStore)
                 .OrderBy(j => j.JobId)
                 .ToList();
             return View(jobs);

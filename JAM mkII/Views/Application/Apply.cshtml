@@ -10,21 +10,22 @@
                 <input type="hidden" asp-for="ApplicationId" />
 
                 <input asp-for="UserId" type="text" class="form-control" hidden readonly />
-
-                <label asp-for="ApplicantName" class="control-label">Applicant Name</label>
-                <input asp-for="ApplicantName" type="text" value="@Model.ApplicantName" class="form-control" readonly />
+                <div>
+                    <label asp-for="ApplicantName" class="control-label">Applicant Name</label>
+                    <input asp-for="ApplicantName" type="text" value="@ViewBag.name" class="form-control" readonly />
+                </div>
                 <div class="form-group">
                     <label asp-for="JobId" class="control-label">Job no</label>
                     <input asp-for="JobId" type="text" class="form-control" readonly />
                 </div>
                 <div class="form-group">
                     <label asp-for="Position" class="control-label">Position</label>
-                    <input asp-for="Position" type="text" class="form-control" readonly />
+                    <input asp-for="Position" type="text" value="@ViewBag.position" class="form-control" readonly />
                 </div>
-                @* <div class="form-group"> *@
-                @*     <label asp-for="Store" class="control-label">Store</label> *@
-                @*     <input asp-for="Store" type="text" class="form-control" readonly /> *@
-                @* </div> *@
+                <div class="form-group">
+                    <label asp-for="StoreLoc" class="control-label">Store</label>
+                    <input asp-for="StoreLoc" type="text" value="@ViewBag.store" class="form-control" readonly />
+                </div>
                 <div class="form-group">
                     <label asp-for="ApplyDate" class="control-label"></label>
                     <input asp-for="ApplyDate" type="date"

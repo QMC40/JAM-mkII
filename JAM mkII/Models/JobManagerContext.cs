@@ -34,6 +34,7 @@ namespace JAM_mkII.Models
                 {
                     UserName = "hotstuff@yahoops.com",
                     Email = "hotstuff@yahoops.com",
+                    NormalizedEmail = "HOTSTUFF@YAHOOPS.COM",
                     SSN = "000-00-0001",
                     FName = "Trogdor",
                     LName = "Burninator",
@@ -46,6 +47,7 @@ namespace JAM_mkII.Models
                 {
                     UserName = "Duke@yahoops.com",
                     Email = "Duke@yahoops.com",
+                    NormalizedEmail = "DUKE@YAHOOPS.COM",
                     SSN = "123-45-6789",
                     FName = "John",
                     LName = "Wayne",
@@ -58,6 +60,7 @@ namespace JAM_mkII.Models
                 {
                     UserName = "OMGawd@yahoops.com",
                     Email = "OMGawd@yahoops.com",
+                    NormalizedEmail = "OMGAWD@YAHOOPS.COM",
                     SSN = "987-65-4321",
                     FName = "Tammy",
                     LName = "Baker",
@@ -70,6 +73,7 @@ namespace JAM_mkII.Models
                 {
                     UserName = "wyrm@yahoops.com",
                     Email = "wyrm@yahoops.com",
+                    NormalizedEmail = "WYRM@YAHOOPS.COM",
                     SSN = "556-28-1867",
                     FName = "Larry",
                     LName = "Linville",
@@ -204,6 +208,7 @@ namespace JAM_mkII.Models
                 serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             var Email = "admin@quickstop.com";
+            var NormalizedEmail = "ADMIN@QUICKSTOP.COM";
             var username = "admin@quickstop.com";
             var password = "Sesame";
             var roleName = "Admin";
@@ -220,7 +225,17 @@ namespace JAM_mkII.Models
             // if username doesn't exist, create it and add to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new() { UserName = username };
+                User user = new()
+                {
+                    Email = Email,
+                    NormalizedEmail = NormalizedEmail,
+                    UserName = username,
+                    FName = FName,
+                    LName = LName,
+                    SSN = SSN,
+                    PhoneNumber = PhoneNumber,
+                    Address = Address
+                };
                 var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded) await userManager.AddToRoleAsync(user, roleName);
             }

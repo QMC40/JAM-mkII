@@ -30,14 +30,12 @@ namespace JAM_mkII.Areas.Admin.Controllers
         {
             var jobs =
                 Context.Jobs
-                    .Include(p => p.PositionName)
-                    .Include(s => s.StoreName)
+                    .Include(p => p.JobPosition)
+                    .Include(s => s.JobStore)
                     .OrderBy(j => j.JobId)
                     .ToList();
             var apps =
                 Context.Applications
-                    // .Include(p => p.PositionName)
-                    // .Include(s => s.StoreName)
                     .OrderBy(a => a.ApplicationId)
                     .ToList();
 
@@ -52,6 +50,10 @@ namespace JAM_mkII.Areas.Admin.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add Job";
+            ViewBag.Positions = Context.Positions.Where(p => p.PositionName != "Applicant" && p.PositionName != "Owner").OrderBy(p => p.PositionId)
+                .ToList();
+            ViewBag.Stores = Context.Stores.OrderBy(s => s.StoreId).ToList();
+
             return View("Edit", new Job());
         }
 
@@ -59,6 +61,9 @@ namespace JAM_mkII.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit Job";
+            ViewBag.Positions = Context.Positions.Where(p => p.PositionName != "Applicant" && p.PositionName != "Owner").OrderBy(p => p.PositionId)
+                .ToList();
+            ViewBag.Stores = Context.Stores.OrderBy(s => s.StoreId).ToList();
             var job = Context.Jobs.Find(id);
             return View(job);
         }
@@ -76,9 +81,15 @@ namespace JAM_mkII.Areas.Admin.Controllers
                 Context.SaveChanges();
                 return RedirectToAction("JobMgmt");
             }
-
-            ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";
-            return View(job);
+            else
+            {
+                ViewBag.Action = job.JobId == 0 ? "Add" : "Edit";
+                ViewBag.Positions = Context.Positions.Where(p => p.PositionName != "Applicant")
+                    .OrderBy(p => p.PositionId)
+                    .ToList();
+                ViewBag.Stores = Context.Stores.OrderBy(s => s.StoreId).ToList();
+                return View(job);
+            }
         }
 
         [HttpGet]
