@@ -208,6 +208,7 @@ namespace JAM_mkII.Models
                 serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             var Email = "admin@quickstop.com";
+            var NormalizedEmail = "ADMIN@QUICKSTOP.COM";
             var username = "admin@quickstop.com";
             var password = "Sesame";
             var roleName = "Admin";
@@ -224,7 +225,17 @@ namespace JAM_mkII.Models
             // if username doesn't exist, create it and add to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new() { UserName = username };
+                User user = new()
+                {
+                    Email = Email,
+                    NormalizedEmail = NormalizedEmail,
+                    UserName = username,
+                    FName = FName,
+                    LName = LName,
+                    SSN = SSN,
+                    PhoneNumber = PhoneNumber,
+                    Address = Address
+                };
                 var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded) await userManager.AddToRoleAsync(user, roleName);
             }

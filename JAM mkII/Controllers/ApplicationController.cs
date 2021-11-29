@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using JAM_mkII.Areas.Admin.Models;
 using JAM_mkII.Models;
 using JAM_mkII.Models.DomainModels;
@@ -25,25 +24,17 @@ namespace JAM_mkII.Controllers
         [HttpGet]
         public async Task<IActionResult> Apply(Job job)
         {
-            //TRY CATCH FOR TS REMOVE FOR TURN IN XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-            try
+            var user = await userManager.GetUserAsync(User);
+            ViewBag.name = user.FName + " " + user.LName;
+            ViewBag.store = Context.Stores.Find(job.StoreId).StoreName;
+            ViewBag.position = Context.Positions.Find(job.PositionId).PositionName;
+            var id = userManager.GetUserId(User);
+            var jobApp = new Application
             {
-                User user = await userManager.GetUserAsync(User);
-                ViewBag.name = user.FName + " " + user.LName;
-                ViewBag.store = Context.Stores.Find(job.StoreId).StoreName;
-                ViewBag.position = Context.Positions.Find(job.PositionId).PositionName;
-                var id = userManager.GetUserId(User);
-                var jobApp = new Application
-                {
-                    UserId = id,
-                    JobId = job.JobId
-                };
-                return View(jobApp);
-            }
-            catch (Exception e)
-            {
-                return Ok("nope");
-            }
+                UserId = id,
+                JobId = job.JobId
+            };
+            return View(jobApp);
         }
 
 
@@ -58,6 +49,26 @@ namespace JAM_mkII.Controllers
             }
 
             return Ok("something is wrong");
+        }
+
+        public async Task<IActionResult> Review(int Id)
+        {
+            var app = await Context.Applications.FindAsync(Id);
+            return View(app);
+        }
+
+        public async Task<IActionResult> Delete(int Id)
+        {
+            var app = await Context.Applications.FindAsync(Id);
+            return View(app);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Application app)
+        {
+            Context.Applications.Remove(app);
+            Context.SaveChanges();
+            return RedirectToAction("JobMgmt", "JobAdmin", new { area = "Admin" });
         }
     }
 }

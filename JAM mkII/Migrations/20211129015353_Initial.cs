@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JAM_mkII.Migrations
 {
-    public partial class Initialized : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -270,10 +270,10 @@ namespace JAM_mkII.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "DoB", "Email", "EmailConfirmed", "FName", "LName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Position", "SSN", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "b296f53e-69f3-447b-90d0-220fe1d64fb4", 0, "Countryside", "10465306-a4d9-4c77-8256-7621dd34ef2b", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hotstuff@yahoops.com", false, "Trogdor", "Burninator", false, null, null, null, null, "555-1212", false, 1, "000-00-0001", "c38d1bc9-4e72-4bb1-8408-6b77d9b898e4", false, "hotstuff@yahoops.com" },
-                    { "33ea3f31-a94e-4f4a-828f-f85d3485d481", 0, "southside", "f3bb6c52-4c3c-46a9-94b1-00e97b748382", new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Duke@yahoops.com", false, "John", "Wayne", false, null, null, null, null, "555-4242", false, 3, "123-45-6789", "8b33b5f1-850c-4c6c-8c53-f41b9e3a4808", false, "Duke@yahoops.com" },
-                    { "d93a1628-ae9c-4f1d-b223-3d87ee3a66f5", 0, "Portland", "33bdfc6e-7131-436f-8667-60ac80cb1945", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "OMGawd@yahoops.com", false, "Tammy", "Baker", false, null, null, null, null, "555-3578", false, 2, "987-65-4321", "474d8cdb-8fd5-4e17-927b-8a5aed52afaa", false, "OMGawd@yahoops.com" },
-                    { "b99ece79-3190-46e2-ac63-d3628a01db65", 0, "Annaville", "284e9976-0530-4b5e-9b4c-d21cf9d10e58", new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wyrm@yahoops.com", false, "Larry", "Linville", false, null, null, null, null, "555-8946", false, 2, "556-28-1867", "1c5008e4-eb2e-4100-99b8-2e3515f4b17f", false, "wyrm@yahoops.com" }
+                    { "8f38a9a1-5944-4159-87d3-ab46306edb6f", 0, "Countryside", "ae2e7064-348d-4185-a87d-5ec6ed4c7ba1", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "hotstuff@yahoops.com", false, "Trogdor", "Burninator", false, null, "HOTSTUFF@YAHOOPS.COM", null, null, "555-1212", false, 1, "000-00-0001", "aa1b603a-3456-4f50-9b22-50543873e31f", false, "hotstuff@yahoops.com" },
+                    { "31d888db-792e-4687-b2d9-f22702e641ae", 0, "southside", "d0378bda-58f3-47a6-bc09-034f40e10ff6", new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Duke@yahoops.com", false, "John", "Wayne", false, null, "DUKE@YAHOOPS.COM", null, null, "555-4242", false, 3, "123-45-6789", "f3bf2908-abb4-48f2-9085-8101f7127a17", false, "Duke@yahoops.com" },
+                    { "501a4259-8742-4339-b518-7c9da8823f30", 0, "Portland", "49392bcf-3193-44ba-a908-eeca118bfd70", new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "OMGawd@yahoops.com", false, "Tammy", "Baker", false, null, "OMGAWD@YAHOOPS.COM", null, null, "555-3578", false, 2, "987-65-4321", "5e79efe4-65be-4f73-896a-bd4a58f7b87b", false, "OMGawd@yahoops.com" },
+                    { "dacdb058-8f8f-42dd-b3ae-0417e08f2768", 0, "Annaville", "5b1131d0-4e2c-481f-843a-efd3e395d180", new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "wyrm@yahoops.com", false, "Larry", "Linville", false, null, "WYRM@YAHOOPS.COM", null, null, "555-8946", false, 2, "556-28-1867", "6fb96f6c-7fc8-46a9-9978-04b39a0e4c79", false, "wyrm@yahoops.com" }
                 });
 
             migrationBuilder.InsertData(

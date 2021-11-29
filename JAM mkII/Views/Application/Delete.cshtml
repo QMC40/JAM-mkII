@@ -1,0 +1,57 @@
+﻿@model JAM_mkII.Models.DomainModels.Application
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Application</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantName)
+        </dd>
+        <dt class = "col-sm-2">
+            Job Id
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JobId)
+        </dd>
+        <dt class = "col-sm-2">
+            Position
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+        <dt class = "col-sm-2">
+            Store
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StoreLoc)
+        </dd>
+        <dt class = "col-sm-2">
+            Application Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplyDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Disqualified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Disqualified)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PassedTest)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PassedTest)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden"  asp-for="ApplicationId" />
+        <input type="submit" value="Delete" asp-controller="Application" class="btn btn-danger"/> |
+        <a asp-action="JobMgmt" asp-controller="JobAdmin" asp-area="Admin">Back to List</a>
+    </form>
+</div>

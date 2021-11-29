@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JAM_mkII.Migrations
 {
     [DbContext(typeof(JobManagerContext))]
-    [Migration("20211128185505_NomalTesting")]
-    partial class NomalTesting
+    [Migration("20211129035847_tests...")]
+    partial class tests
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -106,10 +106,10 @@ namespace JAM_mkII.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7453627c-f692-49d8-95de-5ebdee4b495d",
+                            Id = "6f47e220-6f7e-44d7-85d1-57a399decee8",
                             AccessFailedCount = 0,
                             Address = "Countryside",
-                            ConcurrencyStamp = "0848fd18-149a-455e-b2d0-c4468b49b4bc",
+                            ConcurrencyStamp = "cf648af3-e53c-4108-8775-7a8deb48a18b",
                             DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hotstuff@yahoops.com",
                             EmailConfirmed = false,
@@ -121,16 +121,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 1,
                             SSN = "000-00-0001",
-                            SecurityStamp = "c22cf7c0-672c-4d5a-8697-29a562af4ec0",
+                            SecurityStamp = "b816fa1e-ac2c-4215-b7fd-85b5433d1ec8",
                             TwoFactorEnabled = false,
                             UserName = "hotstuff@yahoops.com"
                         },
                         new
                         {
-                            Id = "09013053-1e6e-43cf-b485-0ff33041c185",
+                            Id = "63d9c227-afe2-42c4-a668-5f658311037c",
                             AccessFailedCount = 0,
                             Address = "southside",
-                            ConcurrencyStamp = "d7252a5c-7725-444e-9264-5f10debe7a7c",
+                            ConcurrencyStamp = "8a23041b-972c-414d-b5f9-5d50b7cac2e4",
                             DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Duke@yahoops.com",
                             EmailConfirmed = false,
@@ -142,16 +142,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 3,
                             SSN = "123-45-6789",
-                            SecurityStamp = "8b40d06e-500a-467d-827b-6ef19a217a9f",
+                            SecurityStamp = "4d29a3f5-e43f-4f01-bfd0-8b9e5397355b",
                             TwoFactorEnabled = false,
                             UserName = "Duke@yahoops.com"
                         },
                         new
                         {
-                            Id = "d223823e-9fd7-474d-845e-02a967cab3c3",
+                            Id = "50f3f596-42e8-4616-86fa-f5804d7408ec",
                             AccessFailedCount = 0,
                             Address = "Portland",
-                            ConcurrencyStamp = "31ec2cce-7b76-4421-894b-e2ec8bbe4d48",
+                            ConcurrencyStamp = "3cbc8cb3-f8e1-4b02-983a-a3b43b584e23",
                             DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "OMGawd@yahoops.com",
                             EmailConfirmed = false,
@@ -163,16 +163,16 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "987-65-4321",
-                            SecurityStamp = "23c3c37d-dc52-49f1-820d-c80bb003e0f4",
+                            SecurityStamp = "a08b75df-5448-48dd-977b-242a444c8a3c",
                             TwoFactorEnabled = false,
                             UserName = "OMGawd@yahoops.com"
                         },
                         new
                         {
-                            Id = "fbca6037-32f9-4a3f-9b0c-1d0c25624851",
+                            Id = "7a9dd996-9c27-4fe6-9c74-84d2d967dd92",
                             AccessFailedCount = 0,
                             Address = "Annaville",
-                            ConcurrencyStamp = "193941d0-ee39-4b51-a9bb-665a1f8ae08f",
+                            ConcurrencyStamp = "16666ebf-5f1a-4113-93b9-83226ceee9f3",
                             DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "wyrm@yahoops.com",
                             EmailConfirmed = false,
@@ -184,7 +184,7 @@ namespace JAM_mkII.Migrations
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "556-28-1867",
-                            SecurityStamp = "57c06a97-3094-44d4-893a-02631e913a6d",
+                            SecurityStamp = "70d54e96-de42-4105-a94a-e835ba6257ad",
                             TwoFactorEnabled = false,
                             UserName = "wyrm@yahoops.com"
                         });

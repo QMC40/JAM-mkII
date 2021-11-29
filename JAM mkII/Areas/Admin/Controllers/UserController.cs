@@ -99,6 +99,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                     if (result.Succeeded)
                         return RedirectToAction("UserMgmt");
                     foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
+
                 }
                 else
 
@@ -106,6 +107,7 @@ namespace JAM_mkII.Areas.Admin.Controllers
                     return RedirectToAction("Edit", model);
                 }
             }
+            return RedirectToAction("Edit", model);
         }
 
         [HttpGet]

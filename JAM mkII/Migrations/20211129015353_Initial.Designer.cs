@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JAM_mkII.Migrations
 {
     [DbContext(typeof(JobManagerContext))]
-    [Migration("20211128174555_Initialized")]
-    partial class Initialized
+    [Migration("20211129015353_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -106,81 +106,85 @@ namespace JAM_mkII.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b296f53e-69f3-447b-90d0-220fe1d64fb4",
+                            Id = "8f38a9a1-5944-4159-87d3-ab46306edb6f",
                             AccessFailedCount = 0,
                             Address = "Countryside",
-                            ConcurrencyStamp = "10465306-a4d9-4c77-8256-7621dd34ef2b",
+                            ConcurrencyStamp = "ae2e7064-348d-4185-a87d-5ec6ed4c7ba1",
                             DoB = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hotstuff@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Trogdor",
                             LName = "Burninator",
                             LockoutEnabled = false,
+                            NormalizedEmail = "HOTSTUFF@YAHOOPS.COM",
                             PhoneNumber = "555-1212",
                             PhoneNumberConfirmed = false,
                             Position = 1,
                             SSN = "000-00-0001",
-                            SecurityStamp = "c38d1bc9-4e72-4bb1-8408-6b77d9b898e4",
+                            SecurityStamp = "aa1b603a-3456-4f50-9b22-50543873e31f",
                             TwoFactorEnabled = false,
                             UserName = "hotstuff@yahoops.com"
                         },
                         new
                         {
-                            Id = "33ea3f31-a94e-4f4a-828f-f85d3485d481",
+                            Id = "31d888db-792e-4687-b2d9-f22702e641ae",
                             AccessFailedCount = 0,
                             Address = "southside",
-                            ConcurrencyStamp = "f3bb6c52-4c3c-46a9-94b1-00e97b748382",
+                            ConcurrencyStamp = "d0378bda-58f3-47a6-bc09-034f40e10ff6",
                             DoB = new DateTime(1934, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Duke@yahoops.com",
                             EmailConfirmed = false,
                             FName = "John",
                             LName = "Wayne",
                             LockoutEnabled = false,
+                            NormalizedEmail = "DUKE@YAHOOPS.COM",
                             PhoneNumber = "555-4242",
                             PhoneNumberConfirmed = false,
                             Position = 3,
                             SSN = "123-45-6789",
-                            SecurityStamp = "8b33b5f1-850c-4c6c-8c53-f41b9e3a4808",
+                            SecurityStamp = "f3bf2908-abb4-48f2-9085-8101f7127a17",
                             TwoFactorEnabled = false,
                             UserName = "Duke@yahoops.com"
                         },
                         new
                         {
-                            Id = "d93a1628-ae9c-4f1d-b223-3d87ee3a66f5",
+                            Id = "501a4259-8742-4339-b518-7c9da8823f30",
                             AccessFailedCount = 0,
                             Address = "Portland",
-                            ConcurrencyStamp = "33bdfc6e-7131-436f-8667-60ac80cb1945",
+                            ConcurrencyStamp = "49392bcf-3193-44ba-a908-eeca118bfd70",
                             DoB = new DateTime(1995, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "OMGawd@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Tammy",
                             LName = "Baker",
                             LockoutEnabled = false,
+                            NormalizedEmail = "OMGAWD@YAHOOPS.COM",
                             PhoneNumber = "555-3578",
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "987-65-4321",
-                            SecurityStamp = "474d8cdb-8fd5-4e17-927b-8a5aed52afaa",
+                            SecurityStamp = "5e79efe4-65be-4f73-896a-bd4a58f7b87b",
                             TwoFactorEnabled = false,
                             UserName = "OMGawd@yahoops.com"
                         },
                         new
                         {
-                            Id = "b99ece79-3190-46e2-ac63-d3628a01db65",
+                            Id = "dacdb058-8f8f-42dd-b3ae-0417e08f2768",
                             AccessFailedCount = 0,
                             Address = "Annaville",
-                            ConcurrencyStamp = "284e9976-0530-4b5e-9b4c-d21cf9d10e58",
+                            ConcurrencyStamp = "5b1131d0-4e2c-481f-843a-efd3e395d180",
                             DoB = new DateTime(1981, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "wyrm@yahoops.com",
                             EmailConfirmed = false,
                             FName = "Larry",
                             LName = "Linville",
                             LockoutEnabled = false,
+                            NormalizedEmail = "WYRM@YAHOOPS.COM",
                             PhoneNumber = "555-8946",
                             PhoneNumberConfirmed = false,
                             Position = 2,
                             SSN = "556-28-1867",
-                            SecurityStamp = "1c5008e4-eb2e-4100-99b8-2e3515f4b17f",
+                            SecurityStamp = "6fb96f6c-7fc8-46a9-9978-04b39a0e4c79",
                             TwoFactorEnabled = false,
                             UserName = "wyrm@yahoops.com"
                         });

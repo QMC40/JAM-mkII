@@ -89,6 +89,5 @@ namespace JAM_mkII
                 endpoints.MapRazorPages();
             });
         }
-
     }
 }
